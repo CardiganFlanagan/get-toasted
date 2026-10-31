@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://cc73dnru1je30"]
+
+[ext_resource type="Script" uid="uid://me53dcosxl6w" path="res://scripts/main_menu.gd" id="1_2w1r8"]
+[ext_resource type="Texture2D" uid="uid://b6luci5wlyc6l" path="res://assets/Background.png" id="1_610dt"]
+[ext_resource type="Texture2D" uid="uid://b2u1t8ovt3nr7" path="res://assets/menu.png" id="2_3tmrh"]
+[ext_resource type="Texture2D" uid="uid://bcn0c6qvllrh8" path="res://assets/plate.png" id="3_cvwki"]
+[ext_resource type="Texture2D" uid="uid://by4vciv7j587m" path="res://assets/LABELS.png" id="4_2w1r8"]
+[ext_resource type="FontFile" uid="uid://6qcsy0pluo3t" path="res://fonts/UnifontExMono.ttf" id="5_q4q5n"]
+[ext_resource type="Texture2D" uid="uid://cto2qnladgapd" path="res://assets/play_juice.png" id="6_2w1r8"]
+[ext_resource type="Texture2D" uid="uid://b2t2eudsphu7d" path="res://assets/play_juice_drop_sheet.png" id="8_m5x4w"]
+[ext_resource type="AudioStream" uid="uid://cge0jllvnt3ub" path="res://sfxs/527322__clearwavsound__ice-cubes-poured-into-drink.wav" id="9_q4q5n"]
+[ext_resource type="Texture2D" uid="uid://c1yiao4csxb0u" path="res://assets/toast_idle_wave_sheet.png" id="10_m5x4w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gq5c2"]
+font = ExtResource("5_q4q5n")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
+font = ExtResource("5_q4q5n")
+font_size = 48
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkoo8"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(0, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7amj"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(120, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mtrp"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(240, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpbep"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(360, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybp8l"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(480, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6uba"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(600, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgdan"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(720, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1n0c"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(840, 0, 120, 124)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_riqys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkoo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7amj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mtrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpbep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybp8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6uba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgdan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1n0c")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mluhb"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l4mo"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbilx"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1i5iw"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox5n5"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73d8i"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exmut"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3d4e"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjb3s"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrrpn"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(360, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mluhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l4mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbilx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1i5iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox5n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73d8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exmut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3d4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjb3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrrpn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Control" unique_id=606965029]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_2w1r8")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1334052545]
+z_index = -2
+position = Vector2(577, 324.5)
+scale = Vector2(1.8, 1.7972223)
+texture = ExtResource("1_610dt")
+
+[node name="Menu" type="Sprite2D" parent="." unique_id=1709769918]
+z_index = -1
+position = Vector2(575, 324)
+scale = Vector2(1.79375, 1.7888889)
+texture = ExtResource("2_3tmrh")
+
+[node name="Plate" type="Sprite2D" parent="." unique_id=445199412]
+position = Vector2(579, 324.00003)
+scale = Vector2(1.7921875, 1.7861111)
+texture = ExtResource("3_cvwki")
+
+[node name="Labels" type="Sprite2D" parent="." unique_id=866915547]
+position = Vector2(573.5, 322)
+scale = Vector2(1.7953125, 1.7888889)
+texture = ExtResource("4_2w1r8")
+
+[node name="Label" type="Label" parent="." unique_id=1645851155]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 225.0
+offset_right = 202.0
+offset_bottom = 249.0
+text = "Основное"
+label_settings = SubResource("LabelSettings_gq5c2")
+
+[node name="Label2" type="Label" parent="." unique_id=448886773]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 225.0
+offset_right = 618.0
+offset_bottom = 249.0
+text = "Напитки"
+label_settings = SubResource("LabelSettings_gq5c2")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1458367504]
+layout_mode = 0
+offset_left = 877.0
+offset_top = 374.0
+offset_right = 1151.0
+offset_bottom = 646.0
+texture_normal = ExtResource("6_2w1r8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton" unique_id=618708967]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 47.0
+offset_right = 244.0
+offset_bottom = 218.0
+text = "Играть
+➜"
+label_settings = SubResource("LabelSettings_bhunq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureButton" unique_id=2104677647]
+visible = false
+position = Vector2(135.5, 136)
+scale = Vector2(2.275, 2.1612904)
+sprite_frames = SubResource("SpriteFrames_riqys")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TextureButton" unique_id=487227285]
+stream = ExtResource("9_q4q5n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539780865]
+position = Vector2(668, 118)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bhunq")
+autoplay = "default"
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="animation_finished" from="TextureButton/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
