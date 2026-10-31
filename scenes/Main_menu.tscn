@@ -239,7 +239,7 @@ sprite_frames = SubResource("SpriteFrames_riqys")
 stream = ExtResource("9_q4q5n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539780865]
-position = Vector2(668, 118)
+position = Vector2(698, 120.00001)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bhunq")
 autoplay = "default"
