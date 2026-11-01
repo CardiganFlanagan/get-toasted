@@ -1,90 +1,11 @@
 [gd_scene format=3 uid="uid://dxkaulxcrdiai"]
 
-[ext_resource type="Texture2D" uid="uid://c1yiao4csxb0u" path="res://assets/toast_idle_wave_sheet.png" id="1_2q6dc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w7c3h"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8frs"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mx8sn"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppgk2"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(120, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2r41h"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(160, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klq6b"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(200, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b121j"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(240, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8c41q"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(280, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olg7q"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(320, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1rx8"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(360, 0, 40, 40)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w7c3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8frs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mx8sn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ppgk2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2r41h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klq6b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b121j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8c41q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olg7q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t1rx8")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://dqyrs1e7x5ebn" path="res://scenes/character.tscn" id="1_2q6dc"]
 
 [node name="Level" type="Node2D" unique_id=1146260588]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317230291]
-position = Vector2(474, 220)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_bhunq")
-autoplay = "default"
-frame_progress = 0.13028365
+[node name="toast" parent="." unique_id=2017173815 instance=ExtResource("1_2q6dc")]
+position = Vector2(316, 170)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="toast" unique_id=1895779503]
