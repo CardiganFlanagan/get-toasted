@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c85u7tjgiks3x"]
+
+[ext_resource type="Script" uid="uid://bw4yhljxjsav2" path="res://scripts/hud.gd" id="1_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://m7ebltwajry2" path="res://assets/button1.png" id="1_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://cigwapbti4vol" path="res://assets/button2.png" id="2_5ysmq"]
+
+[node name="HUD" type="Control" unique_id=1564659137]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5ysmq")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=831519150]
+layout_mode = 0
+offset_left = 587.0
+offset_top = 4.0
+offset_right = 619.0
+offset_bottom = 36.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("1_oo0fn")
+texture_pressed = ExtResource("2_5ysmq")
+texture_hover = ExtResource("2_5ysmq")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="." unique_id=1485093081]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 271.0
+offset_right = 97.0
+offset_bottom = 311.0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

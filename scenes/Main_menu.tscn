@@ -211,9 +211,9 @@ label_settings = SubResource("LabelSettings_gq5c2")
 [node name="Label2" type="Label" parent="Menu/labels" unique_id=448886773]
 layout_mode = 0
 offset_left = 288.0
-offset_top = 125.0
+offset_top = 124.0
 offset_right = 384.0
-offset_bottom = 149.0
+offset_bottom = 148.0
 text = "Напитки"
 label_settings = SubResource("LabelSettings_gq5c2")
 

@@ -1,90 +1,26 @@
 [gd_scene format=3 uid="uid://dxkaulxcrdiai"]
 
-[ext_resource type="Texture2D" uid="uid://c1yiao4csxb0u" path="res://assets/toast_idle_wave_sheet.png" id="1_2q6dc"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w7c3h"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(0, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8frs"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(40, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mx8sn"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(80, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ppgk2"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(120, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2r41h"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(160, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_klq6b"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(200, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b121j"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(240, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8c41q"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(280, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olg7q"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(320, 0, 40, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1rx8"]
-atlas = ExtResource("1_2q6dc")
-region = Rect2(360, 0, 40, 40)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bhunq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w7c3h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8frs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mx8sn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ppgk2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2r41h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_klq6b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b121j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8c41q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olg7q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t1rx8")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://dqyrs1e7x5ebn" path="res://scenes/character.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://ck04tbqv56l4a" path="res://scenes/pause_menu.tscn" id="2_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://c85u7tjgiks3x" path="res://scenes/hud.tscn" id="2_w8frs"]
+[ext_resource type="Texture2D" uid="uid://cc8edndopdvb4" path="res://icon.svg" id="4_mx8sn"]
 
 [node name="Level" type="Node2D" unique_id=1146260588]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317230291]
-position = Vector2(474, 220)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_bhunq")
-autoplay = "default"
-frame_progress = 0.13028365
+[node name="toast" parent="." unique_id=2017173815 instance=ExtResource("1_2q6dc")]
+position = Vector2(316, 170)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="toast" unique_id=1895779503]
+
+[node name="all" type="CanvasLayer" parent="." unique_id=1070671343]
+
+[node name="HUD" parent="all" unique_id=619993927 instance=ExtResource("2_w8frs")]
+
+[node name="pause_menu" parent="all" unique_id=2046811676 instance=ExtResource("2_w7c3h")]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
+z_index = -1
+position = Vector2(335.5, 192.5)
+scale = Vector2(5.2421875, 3.1328125)
+texture = ExtResource("4_mx8sn")
