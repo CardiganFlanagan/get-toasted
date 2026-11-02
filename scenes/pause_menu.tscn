@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bms3wub0fsww7"]
+
+[ext_resource type="Script" uid="uid://du2rhmtcfsbfs" path="res://scripts/pause_menu.gd" id="1_myx47"]
+[ext_resource type="FontFile" uid="uid://6qcsy0pluo3t" path="res://fonts/UnifontExMono.ttf" id="2_kukqi"]
+
+[node name="pause_menu" type="CanvasLayer" unique_id=2046811676]
+process_mode = 3
+script = ExtResource("1_myx47")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1894447315]
+offset_right = 1145.0
+offset_bottom = 646.0
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="Button" type="Button" parent="." unique_id=1918168531]
+offset_left = 398.0
+offset_top = 260.0
+offset_right = 726.0
+offset_bottom = 389.0
+theme_override_fonts/font = ExtResource("2_kukqi")
+theme_override_font_sizes/font_size = 64
+text = "Продолжить"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

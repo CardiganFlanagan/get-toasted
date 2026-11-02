@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://du6ax8mga83w7"
+path="res://.godot/imported/Far Far Away.ogg-1be072b7577df9415fdfda4af5d053c4.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfxs/Audio/ogg/Far Far Away.ogg"
+dest_files=["res://.godot/imported/Far Far Away.ogg-1be072b7577df9415fdfda4af5d053c4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

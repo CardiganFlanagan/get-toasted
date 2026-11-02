@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bhud33qxr2q8w"
+path="res://.godot/imported/Sunlight Through Leaves.ogg-a39e1562d866906b32b59049a567011b.oggvorbisstr"
+
+[deps]
+
+source_file="res://sfxs/Audio/ogg/Sunlight Through Leaves.ogg"
+dest_files=["res://.godot/imported/Sunlight Through Leaves.ogg-a39e1562d866906b32b59049a567011b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
