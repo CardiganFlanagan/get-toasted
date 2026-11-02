@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c1xl0yfrsb4ii"]
+
+[ext_resource type="Script" uid="uid://pe6rwufs22hm" path="res://scenes/pause_button.gd" id="1_5rmv1"]
+
+[node name="Pause_button" type="CanvasLayer" unique_id=869469030]
+script = ExtResource("1_5rmv1")
+
+[node name="pause" type="Button" parent="." unique_id=1758668201]
+offset_left = 1005.0
+offset_top = 10.0
+offset_right = 1139.0
+offset_bottom = 56.0
+text = "Пауза"
+
+[connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]
