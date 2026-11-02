@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://cqdbnbh8ihifl"]
+
+[ext_resource type="Script" uid="uid://wvj0s460lpfi" path="res://scripts/hp_bar.gd" id="1_032he"]
+[ext_resource type="Texture2D" uid="uid://dkrd5t7tsy1hb" path="res://assets/hp/hp_glass.png" id="1_l6ww1"]
+[ext_resource type="Texture2D" uid="uid://c4cr17tvl4rxh" path="res://assets/hp/hp_frame.png" id="1_y1wjm"]
+[ext_resource type="Texture2D" uid="uid://cwgm734nfbiab" path="res://assets/hp/hp_badge.png" id="2_6bv7e"]
+[ext_resource type="Texture2D" uid="uid://belv3h6u7r14h" path="res://assets/hp/hp_cavity_mask.png" id="2_032he"]
+[ext_resource type="Texture2D" uid="uid://c6dlgkw6207j1" path="res://assets/hp/hp_smear.png" id="3_nkemu"]
+[ext_resource type="Texture2D" uid="uid://dax374tgj8y68" path="res://assets/hp/hp_jam.png" id="4_8m5sm"]
+[ext_resource type="Texture2D" uid="uid://5ta7uvgnc8bj" path="res://assets/hp/hp_jam_front.png" id="5_wl5y8"]
+[ext_resource type="Texture2D" uid="uid://2h4c8diuod8o" path="res://assets/hp/hp_shine.png" id="6_ypn4y"]
+[ext_resource type="Texture2D" uid="uid://vxkh3hg6omnw" path="res://assets/hp/hp_face_gold.png" id="9_kascg"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="11_nkemu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_032he"]
+font = ExtResource("11_nkemu")
+
+[node name="HP_Bar" type="Control" unique_id=583031211]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_032he")
+
+[node name="frame" type="TextureRect" parent="." unique_id=1277368293]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("1_y1wjm")
+
+[node name="hp" type="TextureRect" parent="." unique_id=1202308442]
+clip_children = 1
+layout_mode = 0
+offset_left = 46.0
+offset_top = 12.0
+offset_right = 157.0
+offset_bottom = 27.0
+mouse_filter = 2
+texture = ExtResource("2_032he")
+
+[node name="trail" type="TextureProgressBar" parent="hp" unique_id=48990124]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture_progress = ExtResource("3_nkemu")
+
+[node name="jam" type="TextureProgressBar" parent="hp" unique_id=2104543247]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture_progress = ExtResource("4_8m5sm")
+
+[node name="front" type="TextureRect" parent="hp" unique_id=1402756899]
+layout_mode = 0
+offset_left = 105.0
+offset_top = -2.0
+offset_right = 114.0
+offset_bottom = 14.0
+mouse_filter = 2
+texture = ExtResource("5_wl5y8")
+
+[node name="shine" type="TextureRect" parent="hp" unique_id=1974394368]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 14.0
+mouse_filter = 2
+texture = ExtResource("6_ypn4y")
+
+[node name="glass" type="TextureRect" parent="." unique_id=1831606431]
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 48.0
+mouse_filter = 2
+texture = ExtResource("1_l6ww1")
+
+[node name="badge" type="TextureRect" parent="." unique_id=2146592315]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(19, 19)
+mouse_filter = 2
+texture = ExtResource("2_6bv7e")
+
+[node name="TextureRect" type="TextureRect" parent="badge" unique_id=392828692]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("9_kascg")
+
+[node name="value" type="Label" parent="." unique_id=1521978707]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 9.0
+offset_right = 115.0
+offset_bottom = 32.0
+label_settings = SubResource("LabelSettings_032he")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpwvlog8klv6l"
+path="res://.godot/imported/start.wav-3b2a6794e16c648c1a1da55f3cb6c8ad.sample"
+
+[deps]
+
+source_file="res://sfxs/poopie pack/start.wav"
+dest_files=["res://.godot/imported/start.wav-3b2a6794e16c648c1a1da55f3cb6c8ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

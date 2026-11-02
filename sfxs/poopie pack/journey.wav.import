@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c35p7foa4ymfw"
+path="res://.godot/imported/journey.wav-ec898009ed2cfffb58c7f9c3fdb9e2ae.sample"
+
+[deps]
+
+source_file="res://sfxs/poopie pack/journey.wav"
+dest_files=["res://.godot/imported/journey.wav-ec898009ed2cfffb58c7f9c3fdb9e2ae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

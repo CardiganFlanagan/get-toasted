@@ -1,7 +1,6 @@
-[gd_scene format=3 uid="uid://ck04tbqv56l4a"]
+[gd_scene format=3 uid="uid://bms3wub0fsww7"]
 
 [ext_resource type="Texture2D" uid="uid://cj7edm7mp6sbt" path="res://assets/fone.png" id="2_5d2l8"]
-[ext_resource type="FontFile" uid="uid://6qcsy0pluo3t" path="res://fonts/UnifontExMono.ttf" id="2_kukqi"]
 [ext_resource type="Texture2D" uid="uid://dyqt1o4o2lkmb" path="res://assets/pausee-export.png" id="4_5d2l8"]
 [ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="4_7l7mv"]
 
@@ -31,6 +30,11 @@ func _input(event: InputEvent) -> void:
 func _on_button_pressed() -> void:
 	visible = false
 	get_tree().paused = false
+
+
+func _on_button_2_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/Main_menu.tscn\")
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ysmq"]
@@ -46,9 +50,11 @@ script = SubResource("GDScript_kukqi")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1894447315]
 layout_mode = 1
-offset_right = 641.0
-offset_bottom = 404.0
-color = Color(0, 0, 0, 0.16078432)
+offset_left = -159.0
+offset_top = -137.0
+offset_right = 905.0
+offset_bottom = 501.0
+color = Color(0, 0, 0, 0.4392157)
 
 [node name="ColorRect2" type="TextureRect" parent="." unique_id=163430316]
 layout_mode = 1
@@ -57,38 +63,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 178.99997
-offset_top = 2.9999924
-offset_right = 398.99997
-offset_bottom = 237.0
+offset_left = 178.0
+offset_top = 18.999998
+offset_right = 398.0
+offset_bottom = 253.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("2_5d2l8")
 expand_mode = 1
 
-[node name="Button" type="Button" parent="." unique_id=1703249957]
+[node name="TextureRect" type="TextureRect" parent="ColorRect2" unique_id=1044148202]
 layout_mode = 0
-offset_left = 244.0
-offset_top = 84.0
-offset_right = 412.0
-offset_bottom = 124.0
-theme_override_fonts/font = ExtResource("2_kukqi")
-theme_override_font_sizes/font_size = 32
-text = "Продолжить"
-
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1044148202]
-layout_mode = 0
-offset_left = 160.0
-offset_top = -27.0
-offset_right = 350.0
-offset_bottom = 207.0
+offset_left = -18.571432
+offset_top = -60.71428
+offset_right = 171.42857
+offset_bottom = 173.28572
 scale = Vector2(2, 2)
 mouse_filter = 2
 texture = ExtResource("4_5d2l8")
 stretch_mode = 2
 
-[node name="Label" type="Label" parent="TextureRect" unique_id=140766620]
+[node name="Label" type="Label" parent="ColorRect2/TextureRect" unique_id=140766620]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 85.5
@@ -99,4 +95,25 @@ text = "Напитки"
 label_settings = SubResource("LabelSettings_5ysmq")
 vertical_alignment = 1
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Button" type="Button" parent="ColorRect2" unique_id=1703249957]
+layout_mode = 0
+offset_left = 14.285711
+offset_top = 41.428574
+offset_right = 198.2857
+offset_bottom = 85.42857
+theme_override_fonts/font = ExtResource("4_7l7mv")
+theme_override_font_sizes/font_size = 30
+text = "Продолжить"
+
+[node name="Button2" type="Button" parent="ColorRect2" unique_id=250638517]
+layout_mode = 0
+offset_left = 24.999998
+offset_top = 157.14287
+offset_right = 186.42856
+offset_bottom = 203.57146
+theme_override_fonts/font = ExtResource("4_7l7mv")
+theme_override_font_sizes/font_size = 32
+text = "В меню"
+
+[connection signal="pressed" from="ColorRect2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorRect2/Button2" to="." method="_on_button_2_pressed"]
