@@ -12,6 +12,79 @@
 [ext_resource type="Texture2D" uid="uid://c1yiao4csxb0u" path="res://assets/toast_idle_wave_sheet.png" id="10_m5x4w"]
 [ext_resource type="AudioStream" uid="uid://bgu4jqceq46el" path="res://sfxs/Audio/ogg/Pineapple Under The Sea.ogg" id="11_xkoo8"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_gq5c2"]
+font = ExtResource("5_q4q5n")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
+font = ExtResource("5_q4q5n")
+font_size = 32
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkoo8"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(0, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7amj"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(120, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mtrp"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(240, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpbep"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(360, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybp8l"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(480, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6uba"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(600, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgdan"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(720, 0, 120, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1n0c"]
+atlas = ExtResource("8_m5x4w")
+region = Rect2(840, 0, 120, 124)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_riqys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkoo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7amj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mtrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpbep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybp8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6uba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgdan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1n0c")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 7.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_mluhb"]
 atlas = ExtResource("10_m5x4w")
 region = Rect2(0, 0, 40, 40)
@@ -90,79 +163,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gq5c2"]
-font = ExtResource("5_q4q5n")
-
-[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
-font = ExtResource("5_q4q5n")
-font_size = 32
-outline_size = 6
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkoo8"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(0, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7amj"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(120, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mtrp"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(240, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tpbep"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(360, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ybp8l"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(480, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6uba"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(600, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgdan"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(720, 0, 120, 124)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t1n0c"]
-atlas = ExtResource("8_m5x4w")
-region = Rect2(840, 0, 120, 124)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_riqys"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xkoo8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k7amj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mtrp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tpbep")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ybp8l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k6uba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgdan")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t1n0c")
-}],
-"loop": 0,
-"name": &"default",
-"speed": 7.0
-}]
-
 [node name="Node2D" type="Control" unique_id=1428830322]
 layout_mode = 3
 anchors_preset = 15
@@ -193,12 +193,6 @@ offset_bottom = 360.0
 mouse_filter = 2
 texture = ExtResource("4_2w1r8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Menu" unique_id=1539780865]
-position = Vector2(392, 61)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_bhunq")
-autoplay = "default"
-
 [node name="labels" type="TextureRect" parent="Menu" unique_id=756740911]
 layout_mode = 1
 offset_right = 640.0
@@ -216,10 +210,10 @@ label_settings = SubResource("LabelSettings_gq5c2")
 
 [node name="Label2" type="Label" parent="Menu/labels" unique_id=448886773]
 layout_mode = 0
-offset_left = 289.0
-offset_top = 123.0
-offset_right = 385.0
-offset_bottom = 147.0
+offset_left = 288.0
+offset_top = 125.0
+offset_right = 384.0
+offset_bottom = 149.0
 text = "Напитки"
 label_settings = SubResource("LabelSettings_gq5c2")
 
@@ -284,7 +278,7 @@ sprite_frames = SubResource("SpriteFrames_riqys")
 stream = ExtResource("9_q4q5n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1539780865]
-position = Vector2(668, 118)
+position = Vector2(318, 297)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bhunq")
 autoplay = "default"
