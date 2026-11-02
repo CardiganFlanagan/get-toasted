@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dxkaulxcrdiai"]
 
 [ext_resource type="PackedScene" uid="uid://dqyrs1e7x5ebn" path="res://scenes/character.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://ck04tbqv56l4a" path="res://scenes/pause_menu.tscn" id="2_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://c85u7tjgiks3x" path="res://scenes/hud.tscn" id="2_w8frs"]
+[ext_resource type="Texture2D" uid="uid://cc8edndopdvb4" path="res://icon.svg" id="4_mx8sn"]
 
 [node name="Level" type="Node2D" unique_id=1146260588]
 
@@ -9,3 +12,15 @@ position = Vector2(316, 170)
 scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="toast" unique_id=1895779503]
+
+[node name="all" type="CanvasLayer" parent="." unique_id=1070671343]
+
+[node name="HUD" parent="all" unique_id=619993927 instance=ExtResource("2_w8frs")]
+
+[node name="pause_menu" parent="all" unique_id=2046811676 instance=ExtResource("2_w7c3h")]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
+z_index = -1
+position = Vector2(335.5, 192.5)
+scale = Vector2(5.2421875, 3.1328125)
+texture = ExtResource("4_mx8sn")
