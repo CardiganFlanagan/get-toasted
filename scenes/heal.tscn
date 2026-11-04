@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://o45p4odcjt1w"]
+
+[ext_resource type="Script" uid="uid://c6v31aybgxgr4" path="res://scenes/heal.gd" id="1_8vb04"]
+[ext_resource type="Texture2D" uid="uid://cwgm734nfbiab" path="res://assets/hp/hp_badge.png" id="1_iej0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcfpu"]
+size = Vector2(38, 37)
+
+[node name="Heal" type="Area2D" unique_id=741174893]
+script = ExtResource("1_8vb04")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1827242098]
+texture = ExtResource("1_iej0i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=340141792]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_bcfpu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

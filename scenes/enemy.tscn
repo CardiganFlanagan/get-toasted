@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dkymsk1mnjivx"]
+
+[ext_resource type="Script" uid="uid://dm7hiul462nfg" path="res://scripts/enemy2.gd" id="1_4ra3w"]
+[ext_resource type="Texture2D" uid="uid://cc8edndopdvb4" path="res://icon.svg" id="1_7p1mj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xofan"]
+radius = 35.35534
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 40.697052
+
+[node name="enemy" type="CharacterBody2D" unique_id=1753881692 node_paths=PackedStringArray("navigation_agent_2d")]
+script = ExtResource("1_4ra3w")
+navigation_agent_2d = NodePath("NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=33098809]
+shape = SubResource("CircleShape2D_xofan")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2045669600]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7p1mj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=757573133]
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1138530269]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1391710884]
+position = Vector2(0, -0.5)
+shape = SubResource("CircleShape2D_md0e3")
+
+[connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
