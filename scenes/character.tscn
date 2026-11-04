@@ -144,7 +144,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_riqys"]
-radius = 13.0
+radius = 22.0
+height = 44.0
 
 [node name="toast" type="CharacterBody2D" unique_id=2017173815]
 position = Vector2(302, 194)

@@ -7,6 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://cc8edndopdvb4" path="res://icon.svg" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cqdbnbh8ihifl" path="res://scenes/hp_bar.tscn" id="4_ppgk2"]
 [ext_resource type="AudioStream" uid="uid://dpwvlog8klv6l" path="res://sfxs/poopie pack/start.wav" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="8_b121j"]
+[ext_resource type="PackedScene" uid="uid://o45p4odcjt1w" path="res://scenes/heal.tscn" id="9_8c41q"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8c41q"]
+vertices = PackedVector2Array(855.39844, 286.39844, 1237.4688, 590.96875, -287.77344, 588.0078, 467.39844, 286.39844, 1196.4922, -214.97656, 855.39844, 189.5625, -270.21094, -212.00781, 467.39844, 189.5625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(2, 6, 7, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-280, -222, -298, 598, 1248, 601, 1206, -225)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8c41q"]
+size = Vector2(121.24997, 119.11757)
 
 [node name="Level" type="Node2D" unique_id=1146260588]
 script = ExtResource("1_klq6b")
@@ -14,6 +24,7 @@ script = ExtResource("1_klq6b")
 [node name="toast" parent="." unique_id=2017173815 groups=["player"] instance=ExtResource("1_2q6dc")]
 position = Vector2(316, 170)
 scale = Vector2(2, 2)
+collision_mask = 6
 
 [node name="Camera2D" type="Camera2D" parent="toast" unique_id=1895779503]
 
@@ -37,6 +48,7 @@ grow_vertical = 2
 [node name="HP_Bar" parent="all" unique_id=583031211 instance=ExtResource("4_ppgk2")]
 
 [node name="pause_menu" parent="all" unique_id=2046811676 instance=ExtResource("2_w7c3h")]
+visible = false
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
 z_index = -1
@@ -47,4 +59,34 @@ texture = ExtResource("4_mx8sn")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
 autoplay = true
-bus = &"Music"
+
+[node name="Enemy" parent="." unique_id=284496780 node_paths=PackedStringArray("target") instance=ExtResource("8_b121j")]
+position = Vector2(137, 73)
+collision_layer = 2
+collision_mask = 5
+target = NodePath("../toast")
+
+[node name="Heal" parent="." unique_id=741174893 instance=ExtResource("9_8c41q")]
+position = Vector2(536, 60)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1411503139]
+navigation_polygon = SubResource("NavigationPolygon_8c41q")
+
+[node name="Node2D" type="Node2D" parent="NavigationRegion2D" unique_id=1340546233]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Node2D" unique_id=728095843]
+position = Vector2(663, 238.99997)
+scale = Vector2(3.2000005, 0.6800004)
+collision_layer = 4
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Node2D/StaticBody2D" unique_id=559322544]
+texture = ExtResource("4_mx8sn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Node2D/StaticBody2D" unique_id=1543183722]
+position = Vector2(0.625, -3.6763916)
+scale = Vector2(1, 0.9999999)
+shape = SubResource("RectangleShape2D_8c41q")
+
+[connection signal="hit" from="Enemy" to="." method="_on_enemy_hit"]
+[connection signal="heal" from="Heal" to="." method="_on_heal_heal"]
