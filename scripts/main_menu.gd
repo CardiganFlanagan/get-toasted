@@ -2,7 +2,8 @@ extends Control
 
 @onready var texture_button: TextureButton = $TextureButton
 @onready var animated_sprite_2d: AnimatedSprite2D = $TextureButton/AnimatedSprite2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = $TextureButton/AudioStreamPlayer2D
+@onready var sfx: AudioStreamPlayer2D = $TextureButton/SFX
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +19,7 @@ func _on_texture_button_pressed() -> void:
 	texture_button.disabled = true
 	animated_sprite_2d.show()
 	animated_sprite_2d.play()
-	audio_stream_player_2d.play()
+	sfx.play()
 	#await animated_sprite_2d.animation_finished
 
 

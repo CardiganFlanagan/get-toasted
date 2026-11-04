@@ -44,6 +44,7 @@ position = Vector2(335.5, 192.5)
 scale = Vector2(5.2421875, 3.1328125)
 texture = ExtResource("4_mx8sn")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
 autoplay = true
+bus = &"Music"

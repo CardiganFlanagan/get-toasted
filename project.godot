@@ -15,6 +15,10 @@ run/main_scene="uid://cc73dnru1je30"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bfi3vse81fjtg"
+
 [display]
 
 window/size/viewport_width=640
@@ -26,7 +30,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/virtual_joystick_DX/plugin.cfg")
+enabled=PackedStringArray("res://addons/android_emulator_launcher/plugin.cfg", "res://addons/virtual_joystick_DX/plugin.cfg")
 
 [input_devices]
 

@@ -101,19 +101,25 @@ offset_left = 14.285711
 offset_top = 41.428574
 offset_right = 198.2857
 offset_bottom = 85.42857
+theme_override_colors/font_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+theme_override_colors/font_hover_color = Color(0.18039216, 0.1254902, 0.9490196, 1)
 theme_override_fonts/font = ExtResource("4_7l7mv")
 theme_override_font_sizes/font_size = 30
 text = "Продолжить"
+flat = true
 
 [node name="Button2" type="Button" parent="ColorRect2" unique_id=250638517]
 layout_mode = 0
-offset_left = 24.999998
-offset_top = 157.14287
-offset_right = 186.42856
-offset_bottom = 203.57146
+offset_left = 15.714289
+offset_top = 162.14287
+offset_right = 131.71431
+offset_bottom = 208.57146
+theme_override_colors/font_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+theme_override_colors/font_hover_color = Color(0.18039216, 0.1254902, 0.9490196, 1)
 theme_override_fonts/font = ExtResource("4_7l7mv")
 theme_override_font_sizes/font_size = 32
 text = "В меню"
+flat = true
 
 [connection signal="pressed" from="ColorRect2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ColorRect2/Button2" to="." method="_on_button_2_pressed"]
