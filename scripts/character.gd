@@ -6,10 +6,12 @@ signal hp_changed(hp: int, max_hp: int)
 
 @export var max_hp := 25
 var hp := max_hp
+@onready var hp_jar: JamJar = $"../all/JamJar"
 
 func _physics_process(delta):
 	var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = direction * speed
+	hp_jar.set_running(velocity.length() > 10.0)
 
 	move_and_slide()
 	
@@ -21,10 +23,13 @@ func _physics_process(delta):
 		sprite_2d.play("idle")
 
 
-func take_damage(amount: int) -> void:
-	hp = maxi(hp - amount, 0)
-	hp_changed.emit(hp, max_hp)
+#func take_damage(amount: int) -> void:
+	#hp = maxi(hp - amount, 0)
+	#hp_changed.emit(hp, max_hp)
+func take_damage(amount: float) -> void:
+	hp = maxf(hp - amount, 0.0)
+	hp_jar.set_value(hp, max_hp)
 
 func heal(amount: int) -> void:
-	hp = mini(hp + amount, max_hp)
-	hp_changed.emit(hp, max_hp)
+	hp = maxi(hp + amount, 0.0)
+	hp_jar.set_value(hp, max_hp)

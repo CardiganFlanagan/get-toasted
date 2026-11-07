@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cx545ar3km4mh"]
+
+[ext_resource type="PackedScene" uid="uid://0bh1edmyq271" path="res://ui/hud/jam_jar/jam_jar.tscn" id="2_jar"]
+
+[sub_resource type="GDScript" id="GDScript_ffu2k"]
+script/source = "extends Control
+## Демо банок: Пробел или тап — урон, H — лечение, M — потратить ману, R — бег, 1/2/3 — вкус.
+
+@onready var hp_jar: JamJar = $HealthJar
+@onready var mana_jar: JamJar = $ManaJar
+
+var hp := 100.0
+var mana := 100.0
+var running := false
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch and event.is_pressed():
+		_damage()
+		return
+	var key := event as InputEventKey
+	if key == null or not key.pressed or key.echo:
+		return
+	match key.keycode:
+		KEY_SPACE:
+			_damage()
+		KEY_H:
+			hp = minf(hp + 20.0, 100.0)
+			hp_jar.set_value(hp, 100.0)
+		KEY_M:
+			mana = maxf(mana - 30.0, 0.0) if mana > 0.0 else 100.0
+			mana_jar.set_value(mana, 100.0)
+		KEY_R:
+			running = not running
+			hp_jar.set_running(running)
+			mana_jar.set_running(running)
+		KEY_1, KEY_2, KEY_3:
+			hp_jar.flavor = (key.keycode - KEY_1) as JamJar.Flavor
+
+
+func _damage() -> void:
+	hp = maxf(hp - 15.0, 0.0)
+	hp_jar.set_value(hp, 100.0)
+"
+
+[node name="JamJarDemo" type="Control" unique_id=1819422370]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_ffu2k")
+
+[node name="HealthJar" parent="." unique_id=38545660 instance=ExtResource("2_jar")]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 72.0
+
+[node name="ManaJar" parent="." unique_id=123185279 instance=ExtResource("2_jar")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = 72.0
+flavor = 1
+
+[node name="Help" type="Label" parent="." unique_id=1653667126]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 600.0
+offset_bottom = 104.0
+text = "Пробел/тап — урон · H — лечение · M — мана · R — бег · 1/2/3 — вкус"

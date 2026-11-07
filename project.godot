@@ -30,7 +30,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/android_emulator_launcher/plugin.cfg", "res://addons/virtual_joystick_DX/plugin.cfg")
+enabled=PackedStringArray("res://addons/virtual_joystick_DX/plugin.cfg")
 
 [input_devices]
 

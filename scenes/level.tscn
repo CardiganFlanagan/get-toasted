@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc8edndopdvb4" path="res://icon.svg" id="4_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://cqdbnbh8ihifl" path="res://scenes/hp_bar.tscn" id="4_ppgk2"]
 [ext_resource type="AudioStream" uid="uid://dpwvlog8klv6l" path="res://sfxs/poopie pack/start.wav" id="6_2r41h"]
+[ext_resource type="PackedScene" uid="uid://0bh1edmyq271" path="res://ui/hud/jam_jar/jam_jar.tscn" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://o45p4odcjt1w" path="res://scenes/heal.tscn" id="9_8c41q"]
 
@@ -46,9 +47,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HP_Bar" parent="all" unique_id=583031211 instance=ExtResource("4_ppgk2")]
+visible = false
 
 [node name="pause_menu" parent="all" unique_id=2046811676 instance=ExtResource("2_w7c3h")]
 visible = false
+
+[node name="JamJar" parent="all" unique_id=1858017369 instance=ExtResource("6_olg7q")]
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
 z_index = -1
@@ -59,6 +63,7 @@ texture = ExtResource("4_mx8sn")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
 autoplay = true
+bus = &"Music"
 
 [node name="Enemy" parent="." unique_id=284496780 node_paths=PackedStringArray("target") instance=ExtResource("8_b121j")]
 position = Vector2(137, 73)

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://0bh1edmyq271"]
+
+[ext_resource type="Script" uid="uid://cmmtg3d22b1aa" path="res://ui/hud/jam_jar/jam_jar.gd" id="1_jar"]
+[ext_resource type="Shader" uid="uid://cb3xj4xkyivqa" path="res://ui/hud/jam_jar/jam_jar.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" uid="uid://cdelselc76wyn" path="res://ui/hud/jam_jar/jam_jar_mask.png" id="3_mask"]
+[ext_resource type="Texture2D" uid="uid://qp761lqg0anl" path="res://ui/hud/jam_jar/jam_jar_front.png" id="4_front"]
+[ext_resource type="Texture2D" uid="uid://yhrpshxupbrn" path="res://ui/hud/jam_jar/jam_jar_face.png" id="5_face"]
+[ext_resource type="Texture2D" uid="uid://bjw7jiqoob6hl" path="res://ui/hud/jam_jar/jam_jar_tag.png" id="6_tag"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="7_ens5r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jam"]
+resource_local_to_scene = true
+shader = ExtResource("2_shader")
+shader_parameter/height = 1.0
+shader_parameter/oheight = 1.0
+shader_parameter/fill_top_px = 16.0
+shader_parameter/fill_bottom_px = 51.0
+shader_parameter/mask_texture = ExtResource("3_mask")
+shader_parameter/draw_outline = true
+shader_parameter/shade_width_px = 0.0
+shader_parameter/jam_color = Color(0.827, 0.227, 0.31, 1)
+shader_parameter/jam_light_color = Color(0.949, 0.471, 0.541, 1)
+shader_parameter/jam_dark_color = Color(0.561, 0.122, 0.2, 1)
+shader_parameter/ghost_color = Color(0.941, 0.667, 0.71, 1)
+shader_parameter/seed_color = Color(1, 0.827, 0.42, 1)
+shader_parameter/glass_color = Color(0.745, 0.882, 0.922, 0.4)
+shader_parameter/outline_color = Color(0.31, 0.478, 0.533, 1)
+shader_parameter/alert_color = Color(0.878, 0.271, 0.227, 1)
+shader_parameter/alert = false
+shader_parameter/alert_blink_speed = 10.0
+shader_parameter/wobble = 0.0
+shader_parameter/slosh = 0.0
+shader_parameter/flash = 0.0
+shader_parameter/gray_amount = 0.0
+shader_parameter/wave_amplitude_px = 0.5
+shader_parameter/wave_frequency = 0.45
+shader_parameter/wave_speed = 2.2
+shader_parameter/wobble_amplitude_px = 2.4
+shader_parameter/slosh_amplitude_px = 2.2
+shader_parameter/slosh_speed = 5.0
+shader_parameter/anim_fps = 0.0
+shader_parameter/draw_back_wave = true
+shader_parameter/back_lightness = 0.72
+shader_parameter/back_offset_px = 1.0
+shader_parameter/back_amplitude_scale = 1.3
+shader_parameter/back_speed_scale = -0.8
+shader_parameter/back_phase = 2.1
+shader_parameter/back_tilt_scale = -0.6
+shader_parameter/berry_count = 12
+shader_parameter/berry_columns_px = Vector2(11, 35)
+shader_parameter/berry_bob_speed = 0.9
+
+[node name="JamJar" type="Control" unique_id=1858017369]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 56)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 48.0
+offset_bottom = 56.0
+mouse_filter = 2
+script = ExtResource("1_jar")
+
+[node name="Visual" type="Control" parent="." unique_id=223132314]
+anchors_preset = 0
+offset_right = 48.0
+offset_bottom = 56.0
+mouse_filter = 2
+
+[node name="Jam" type="ColorRect" parent="Visual" unique_id=298670876]
+material = SubResource("ShaderMaterial_jam")
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 56.0
+mouse_filter = 2
+
+[node name="Tag" type="Sprite2D" parent="Visual" unique_id=492387695]
+texture = ExtResource("6_tag")
+centered = false
+hframes = 3
+
+[node name="Front" type="TextureRect" parent="Visual" unique_id=1816706550]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 56.0
+mouse_filter = 2
+texture = ExtResource("4_front")
+
+[node name="Face" type="Sprite2D" parent="Visual" unique_id=2104046054]
+texture = ExtResource("5_face")
+centered = false
+hframes = 6
+
+[node name="value" type="Label" parent="Visual" unique_id=1424957461]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 30.0
+offset_right = 81.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("7_ens5r")

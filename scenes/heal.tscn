@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o45p4odcjt1w"]
 
-[ext_resource type="Script" uid="uid://c6v31aybgxgr4" path="res://scenes/heal.gd" id="1_8vb04"]
+[ext_resource type="Script" uid="uid://c6v31aybgxgr4" path="res://scripts/heal.gd" id="1_8vb04"]
 [ext_resource type="Texture2D" uid="uid://cwgm734nfbiab" path="res://assets/hp/hp_badge.png" id="1_iej0i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcfpu"]
