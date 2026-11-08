@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://d3c1btdm8gapc"]
+
+[ext_resource type="Script" uid="uid://boxvy4qekje6" path="res://scripts/bullet.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://7yoek2w1vtpl" path="res://assets/bee_stinger.png" id="2_y25gk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
+radius = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
+atlas = ExtResource("2_y25gk")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sting"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5glv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoqba")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Bullet" type="Area2D" unique_id=1359791145]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1216444274]
+shape = SubResource("CircleShape2D_bullet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1622422163]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_sting")
+autoplay = "default"
+frame_progress = 0.33173612

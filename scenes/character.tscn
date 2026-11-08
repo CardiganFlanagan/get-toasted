@@ -149,6 +149,8 @@ height = 32.0
 
 [node name="toast" type="CharacterBody2D" unique_id=2017173815]
 position = Vector2(302, 194)
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_lrhn5")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2000431088]

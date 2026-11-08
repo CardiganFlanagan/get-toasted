@@ -10,6 +10,8 @@ radius = 35.35534
 radius = 40.697052
 
 [node name="enemy" type="CharacterBody2D" unique_id=1753881692 node_paths=PackedStringArray("navigation_agent_2d")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_4ra3w")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 
@@ -23,11 +25,15 @@ texture = ExtResource("1_7p1mj")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=757573133]
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1138530269]
-collision_layer = 2
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1391710884]
 position = Vector2(0, -0.5)
 shape = SubResource("CircleShape2D_md0e3")
 
+[node name="Timer" type="Timer" parent="hitbox" unique_id=449153977]
+
 [connection signal="area_entered" from="hitbox" to="hitbox" method="_on_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="hitbox/Timer" to="." method="_on_timer_timeout"]

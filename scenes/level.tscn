@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cqdbnbh8ihifl" path="res://scenes/hp_bar.tscn" id="4_ppgk2"]
 [ext_resource type="AudioStream" uid="uid://dpwvlog8klv6l" path="res://sfxs/poopie pack/start.wav" id="6_2r41h"]
 [ext_resource type="PackedScene" uid="uid://0bh1edmyq271" path="res://ui/hud/jam_jar/jam_jar.tscn" id="6_olg7q"]
-[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://o45p4odcjt1w" path="res://scenes/heal.tscn" id="9_8c41q"]
+[ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="11_t1rx8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8c41q"]
 vertices = PackedVector2Array(855.39844, 286.39844, 1237.4688, 590.96875, -287.77344, 588.0078, 467.39844, 286.39844, 1196.4922, -214.97656, 855.39844, 189.5625, -270.21094, -212.00781, 467.39844, 189.5625)
@@ -25,6 +25,7 @@ script = ExtResource("1_klq6b")
 [node name="toast" parent="." unique_id=2017173815 groups=["player"] instance=ExtResource("1_2q6dc")]
 position = Vector2(316, 170)
 scale = Vector2(2, 2)
+collision_layer = 1
 collision_mask = 6
 
 [node name="Camera2D" type="Camera2D" parent="toast" unique_id=1895779503]
@@ -53,6 +54,8 @@ visible = false
 visible = false
 
 [node name="JamJar" parent="all" unique_id=1858017369 instance=ExtResource("6_olg7q")]
+flavor = 0
+heal_speed = 0.2
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
 z_index = -1
@@ -60,21 +63,18 @@ position = Vector2(335.5, 192.5)
 scale = Vector2(5.2421875, 3.1328125)
 texture = ExtResource("4_mx8sn")
 
+[node name="bee" parent="." unique_id=610651803 instance=ExtResource("11_t1rx8")]
+
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
 autoplay = true
 bus = &"Music"
 
-[node name="Enemy" parent="." unique_id=284496780 node_paths=PackedStringArray("target") instance=ExtResource("8_b121j")]
-position = Vector2(137, 73)
-collision_layer = 2
-collision_mask = 5
-target = NodePath("../toast")
-
 [node name="Heal" parent="." unique_id=741174893 instance=ExtResource("9_8c41q")]
 position = Vector2(536, 60)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1411503139]
+position = Vector2(0, -19)
 navigation_polygon = SubResource("NavigationPolygon_8c41q")
 
 [node name="Node2D" type="Node2D" parent="NavigationRegion2D" unique_id=1340546233]
@@ -82,8 +82,8 @@ navigation_polygon = SubResource("NavigationPolygon_8c41q")
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Node2D" unique_id=728095843]
 position = Vector2(663, 238.99997)
 scale = Vector2(3.2000005, 0.6800004)
-collision_layer = 4
-collision_mask = 3
+collision_layer = 2
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Node2D/StaticBody2D" unique_id=559322544]
 texture = ExtResource("4_mx8sn")
@@ -93,5 +93,4 @@ position = Vector2(0.625, -3.6763916)
 scale = Vector2(1, 0.9999999)
 shape = SubResource("RectangleShape2D_8c41q")
 
-[connection signal="hit" from="Enemy" to="." method="_on_enemy_hit"]
 [connection signal="heal" from="Heal" to="." method="_on_heal_heal"]

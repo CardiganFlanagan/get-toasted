@@ -1,0 +1,96 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/enemies/bee_shooter.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee2"]
+atlas = ExtResource("1_sheet")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee3"]
+atlas = ExtResource("1_sheet")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee9"]
+atlas = ExtResource("1_sheet")
+region = Rect2(144, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee3")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee5")
+}],
+"loop": 1,
+"name": &"aim",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee7")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee9")
+}],
+"loop": 1,
+"name": &"tired",
+"speed": 5.0
+}]

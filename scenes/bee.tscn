@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://brspiwko8hn2r"]
+
+[ext_resource type="Script" uid="uid://t2rh7eb71vt6" path="res://scripts/shooter.gd" id="1_vie5o"]
+[ext_resource type="PackedScene" uid="uid://d3c1btdm8gapc" path="res://scenes/bullet.tscn" id="2_ogg2i"]
+[ext_resource type="Texture2D" uid="uid://dn20muh7qwppl" path="res://assets/enemies/bee_shooter.png" id="3_ogg2i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 9.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee4"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee5"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee0"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee1"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee2"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee3"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee6"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee7"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee8"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bee9"]
+atlas = ExtResource("3_ogg2i")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ogg2i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee5")
+}],
+"loop": 1,
+"name": &"aim",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee3")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee7")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bee9")
+}],
+"loop": 1,
+"name": &"tired",
+"speed": 5.0
+}]
+
+[node name="bee" type="CharacterBody2D" unique_id=610651803]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_vie5o")
+bullet_scene = ExtResource("2_ogg2i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1075953321]
+shape = SubResource("CircleShape2D_bhunq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2025977662]
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=291513017]
+target_position = Vector2(0, 44)
+collision_mask = 3
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1425021533]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1048028765]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ogg2i")
+animation = &"fly"
+autoplay = "fly"
