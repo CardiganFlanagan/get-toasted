@@ -17,3 +17,6 @@ mono_crash.*.json
 Get Toasted.apk
 Get Toasted.apk
 Get Toasted.apk.idsig
+Get Toasted.apk
+build/android/game.apk
+build/android/game.apk.idsig
