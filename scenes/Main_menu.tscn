@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://cge0jllvnt3ub" path="res://sfxs/527322__clearwavsound__ice-cubes-poured-into-drink.wav" id="9_q4q5n"]
 [ext_resource type="Texture2D" uid="uid://c1yiao4csxb0u" path="res://assets/toast_idle_wave_sheet.png" id="10_m5x4w"]
 [ext_resource type="AudioStream" uid="uid://bgu4jqceq46el" path="res://sfxs/Audio/ogg/Pineapple Under The Sea.ogg" id="11_xkoo8"]
+[ext_resource type="Texture2D" uid="uid://402o54wog0qv" path="res://assets/exit_sign_front.png" id="12_0mtrp"]
+[ext_resource type="Texture2D" uid="uid://c2qjcfphg1etj" path="res://assets/exit_sign_flip.png" id="13_tpbep"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gq5c2"]
 font = ExtResource("5_q4q5n")
@@ -163,6 +165,98 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_br3l1"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(0, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7xop"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(90, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn7sj"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(180, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aa6o"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(270, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d12c"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(360, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16tj7"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(450, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxffk"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(540, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuk1q"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(630, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q3tt"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(720, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fxk5"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(810, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uwnq"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(900, 0, 90, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djo74"]
+atlas = ExtResource("13_tpbep")
+region = Rect2(990, 0, 90, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4ul2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br3l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7xop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn7sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7aa6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d12c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16tj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxffk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuk1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q3tt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fxk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uwnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djo74")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="Node2D" type="Control" unique_id=1428830322]
 layout_mode = 3
 anchors_preset = 15
@@ -289,5 +383,24 @@ stream = ExtResource("11_xkoo8")
 autoplay = true
 bus = &"Music"
 
+[node name="TextureButton2" type="TextureButton" parent="." unique_id=1323748280]
+layout_mode = 1
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 168.0
+offset_bottom = 75.0
+texture_normal = ExtResource("12_0mtrp")
+stretch_mode = 0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TextureButton2" unique_id=250622488]
+visible = false
+position = Vector2(83.49999, 36.5)
+scale = Vector2(1.8777776, 1.46)
+sprite_frames = SubResource("SpriteFrames_a4ul2")
+frame = 10
+frame_progress = 0.50019723
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="animation_finished" from="TextureButton/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="animation_finished" from="TextureButton2/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]

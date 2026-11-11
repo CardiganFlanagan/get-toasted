@@ -4,6 +4,8 @@ extends Control
 @onready var animated_sprite_2d: AnimatedSprite2D = $TextureButton/AnimatedSprite2D
 @onready var sfx: AudioStreamPlayer2D = $TextureButton/SFX
 
+@onready var texture_button_2: TextureButton = $TextureButton2
+@onready var animated_sprite_2d_2: AnimatedSprite2D = $TextureButton2/AnimatedSprite2D2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,5 +25,19 @@ func _on_texture_button_pressed() -> void:
 	#await animated_sprite_2d.animation_finished
 
 
+
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	get_tree().change_scene_to_file("res://scenes/level.tscn")
+
+
+func _on_texture_button_2_pressed() -> void:
+	texture_button_2.disabled= true
+	texture_button_2.self_modulate.a = 0
+	animated_sprite_2d_2.show()
+	animated_sprite_2d_2.frame = 0
+	animated_sprite_2d_2.play()
+
+
+func _on_animated_sprite_2d_2_animation_finished() -> void:
+	get_tree().quit()

@@ -9,7 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://dpwvlog8klv6l" path="res://sfxs/poopie pack/start.wav" id="6_2r41h"]
 [ext_resource type="PackedScene" uid="uid://0bh1edmyq271" path="res://ui/hud/jam_jar/jam_jar.tscn" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://o45p4odcjt1w" path="res://scenes/heal.tscn" id="9_8c41q"]
+[ext_resource type="PackedScene" uid="uid://dmjk0o7weg183" path="res://scenes/charger.tscn" id="11_8iemx"]
 [ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="11_t1rx8"]
+[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="12_8iemx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8c41q"]
 vertices = PackedVector2Array(855.39844, 286.39844, 1237.4688, 590.96875, -287.77344, 588.0078, 467.39844, 286.39844, 1196.4922, -214.97656, 855.39844, 189.5625, -270.21094, -212.00781, 467.39844, 189.5625)
@@ -68,10 +70,15 @@ texture = ExtResource("4_mx8sn")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
 autoplay = true
-bus = &"Music"
 
 [node name="Heal" parent="." unique_id=741174893 instance=ExtResource("9_8c41q")]
 position = Vector2(536, 60)
+
+[node name="Charger" parent="." unique_id=587149297 instance=ExtResource("11_8iemx")]
+position = Vector2(-121, 161)
+
+[node name="enemy" parent="." unique_id=1753881692 instance=ExtResource("12_8iemx")]
+position = Vector2(-121, 161)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1411503139]
 position = Vector2(0, -19)

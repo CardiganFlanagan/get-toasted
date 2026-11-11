@@ -54,9 +54,9 @@ func take_damage(amount:int, invincible_time = 4) -> void:
 	if invincible_time > 0 :
 		invincible = true
 		var invincible_tween = create_tween().set_trans(Tween.TRANS_SINE)
-		invincible_tween.tween_property($Sprite2D, "modulate:a",0.5,invincible_time/4)
+		invincible_tween.tween_property($Sprite2D, "modulate:a",0.25,invincible_time/4)
 		invincible_tween.chain().tween_property($Sprite2D, "modulate:a",1,invincible_time/4)
-		invincible_tween.chain().chain().tween_property($Sprite2D, "modulate:a",0.5,invincible_time/4)
+		invincible_tween.chain().chain().tween_property($Sprite2D, "modulate:a",0.25,invincible_time/4)
 		invincible_tween.chain().chain().tween_property($Sprite2D, "modulate:a",1,invincible_time/4).finished.connect(func(): invincible = false)	
 	
 	
