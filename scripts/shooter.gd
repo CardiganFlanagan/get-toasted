@@ -1,16 +1,10 @@
-extends CharacterBody2D
+extends Enemy
+# Пчела: Погоня → Отлёт → Прицел → Выстрел и отдых. stats, target и hp — в enemy.gd
 
 
 enum State { CHASE, RETREAT, AIM, COOLDOWN }
 
-@export var target: CharacterBody2D
 @export var bullet_scene: PackedScene
-@export var speed := 100.0
-@export var shoot_range := 250.0
-@export var retreat_range := 150.0
-@export var retreat_time := 1.0  
-@export var aim_time := 0.7       
-@export var cooldown_time := 1.5
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var state := State.CHASE
@@ -18,14 +12,6 @@ var timer := 0.0
 
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
-
-
-func _ready() -> void:
-	target = get_tree().get_first_node_in_group("player")
-	print("bee layer=", collision_layer, " mask=", collision_mask,
-		" | toast layer=", target.collision_layer, " mask=", target.collision_mask,
-		" | bee shapes=", get_shape_owners().size())
-	target = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta: float) -> void:
@@ -36,24 +22,24 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.CHASE:
 			navigation_agent_2d.target_position = target.global_position
-			velocity = global_position.direction_to(navigation_agent_2d.get_next_path_position()) * speed
-			if sees_player and dist < retreat_range:
-				change_state(State.RETREAT, retreat_time)
-			elif sees_player and dist <= shoot_range:
-				change_state(State.AIM, aim_time)
+			velocity = global_position.direction_to(navigation_agent_2d.get_next_path_position()) * stats.speed
+			if sees_player and dist < stats.retreat_range:
+				change_state(State.RETREAT, stats.retreat_time)
+			elif sees_player and dist <= stats.vision_range:
+				change_state(State.AIM, stats.windup_time)
 
 		State.RETREAT:
-			velocity = target.global_position.direction_to(global_position) * speed
-			if dist >= retreat_range or timer <= 0:
-				change_state(State.AIM, aim_time)
+			velocity = target.global_position.direction_to(global_position) * stats.speed
+			if dist >= stats.retreat_range or timer <= 0:
+				change_state(State.AIM, stats.windup_time)
 
 		State.AIM:
 			velocity = Vector2.ZERO
-			if not sees_player or dist > shoot_range:
+			if not sees_player or dist > stats.vision_range:
 				change_state(State.CHASE, 0) 
 			elif timer <= 0:
 				shoot()
-				change_state(State.COOLDOWN, cooldown_time)
+				change_state(State.COOLDOWN, stats.cooldown_time)
 
 		State.COOLDOWN:
 			velocity = Vector2.ZERO
@@ -90,6 +76,8 @@ func shoot() -> void:
 	bullet.global_position = global_position
 	bullet.direction = global_position.direction_to(target.global_position)
 	bullet.rotation = bullet.direction.angle()
+	bullet.speed = stats.bullet_speed
+	bullet.damage = stats.damage
 
 
 func _draw() -> void:

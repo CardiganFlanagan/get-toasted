@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dqyrs1e7x5ebn"]
 
 [ext_resource type="Script" uid="uid://cr28xrwuy3c5h" path="res://scripts/character.gd" id="1_lrhn5"]
+[ext_resource type="Resource" path="res://data/player/toast_stats.tres" id="9_stats"]
+[ext_resource type="PackedScene" path="res://scenes/weapon.tscn" id="10_weapon"]
 [ext_resource type="Texture2D" uid="uid://ck7hy3n64wuu1" path="res://assets/toast_idle_sheet.png" id="1_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://brtnrxhli8pac" path="res://assets/toast_walk_sheet.png" id="2_lrhn5"]
 
@@ -152,6 +154,7 @@ position = Vector2(302, 194)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_lrhn5")
+stats = ExtResource("9_stats")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2000431088]
 sprite_frames = SubResource("SpriteFrames_bhunq")
@@ -162,4 +165,5 @@ frame_progress = 0.23769787
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2080684013]
 shape = SubResource("CapsuleShape2D_riqys")
 
-[connection signal="animation_changed" from="Sprite2D" to="." method="_on_sprite_2d_animation_changed"]
+[node name="Weapon" parent="." instance=ExtResource("10_weapon")]
+

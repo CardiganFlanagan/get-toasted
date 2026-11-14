@@ -8,6 +8,7 @@ size = Vector2(38, 37)
 
 [node name="Heal" type="Area2D" unique_id=741174893]
 script = ExtResource("1_8vb04")
+amount = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1827242098]
 texture = ExtResource("1_iej0i")

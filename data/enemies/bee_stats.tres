@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+title = "Пчёлы"
+price = 20
+speed = 100.0
+max_hp = 4
+damage = 3
+vision_range = 250.0
+windup_time = 0.7
+cooldown_time = 1.5
+retreat_range = 150.0
+retreat_time = 1.0
+bullet_speed = 250.0

@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://bfi3vse81fjtg"
 
+[autoload]
+
+Game="*uid://bavn7dqrnoll"
+
 [display]
 
 window/size/viewport_width=640

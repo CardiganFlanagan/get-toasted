@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="LevelData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1_level"]
+[ext_resource type="Script" path="res://scripts/data/wave.gd" id="2_wave"]
+[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="3_chaser"]
+[ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="4_bee"]
+[ext_resource type="PackedScene" path="res://scenes/charger.tscn" id="5_beetle"]
+
+[sub_resource type="Resource" id="Resource_wave1"]
+script = ExtResource("2_wave")
+enemy_scene = ExtResource("3_chaser")
+count = 3
+delay = 1.0
+
+[sub_resource type="Resource" id="Resource_wave2"]
+script = ExtResource("2_wave")
+enemy_scene = ExtResource("4_bee")
+count = 1
+delay = 10.0
+
+[sub_resource type="Resource" id="Resource_wave3"]
+script = ExtResource("2_wave")
+enemy_scene = ExtResource("5_beetle")
+count = 1
+delay = 10.0
+
+[sub_resource type="Resource" id="Resource_wave4"]
+script = ExtResource("2_wave")
+enemy_scene = ExtResource("3_chaser")
+count = 4
+delay = 15.0
+
+[sub_resource type="Resource" id="Resource_wave5"]
+script = ExtResource("2_wave")
+enemy_scene = ExtResource("4_bee")
+count = 1
+delay = 10.0
+
+[resource]
+script = ExtResource("1_level")
+title = "Обед"
+time_limit = 60.0
+waves = Array[ExtResource("2_wave")]([SubResource("Resource_wave1"), SubResource("Resource_wave2"), SubResource("Resource_wave3"), SubResource("Resource_wave4"), SubResource("Resource_wave5")])

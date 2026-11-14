@@ -9,20 +9,36 @@
 [ext_resource type="AudioStream" uid="uid://dpwvlog8klv6l" path="res://sfxs/poopie pack/start.wav" id="6_2r41h"]
 [ext_resource type="PackedScene" uid="uid://0bh1edmyq271" path="res://ui/hud/jam_jar/jam_jar.tscn" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://o45p4odcjt1w" path="res://scenes/heal.tscn" id="9_8c41q"]
-[ext_resource type="PackedScene" uid="uid://dmjk0o7weg183" path="res://scenes/charger.tscn" id="11_8iemx"]
-[ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="11_t1rx8"]
-[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="12_8iemx"]
+[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="12_ldata"]
+[ext_resource type="Resource" path="res://data/levels/level_1.tres" id="13_lvl1"]
+[ext_resource type="Resource" path="res://data/levels/level_2.tres" id="14_lvl2"]
+[ext_resource type="Resource" path="res://data/levels/level_3.tres" id="15_lvl3"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="16_tiny5"]
+[ext_resource type="PackedScene" path="res://scenes/end_screen.tscn" id="17_end"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8c41q"]
 vertices = PackedVector2Array(855.39844, 286.39844, 1237.4688, 590.96875, -287.77344, 588.0078, 467.39844, 286.39844, 1196.4922, -214.97656, 855.39844, 189.5625, -270.21094, -212.00781, 467.39844, 189.5625)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 1, 0, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(2, 6, 7, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-280, -222, -298, 598, 1248, 601, 1206, -225)])
 
+[sub_resource type="LabelSettings" id="LabelSettings_hud"]
+font = ExtResource("16_tiny5")
+font_size = 16
+outline_size = 4
+outline_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_v"]
+size = Vector2(40, 900)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall_h"]
+size = Vector2(1580, 40)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c41q"]
 size = Vector2(121.24997, 119.11757)
 
 [node name="Level" type="Node2D" unique_id=1146260588]
 script = ExtResource("1_klq6b")
+levels = Array[ExtResource("12_ldata")]([ExtResource("13_lvl1"), ExtResource("14_lvl2"), ExtResource("15_lvl3")])
 
 [node name="toast" parent="." unique_id=2017173815 groups=["player"] instance=ExtResource("1_2q6dc")]
 position = Vector2(316, 170)
@@ -59,13 +75,27 @@ visible = false
 flavor = 0
 heal_speed = 0.2
 
+[node name="TimeLabel" type="Label" parent="all"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 6.0
+offset_right = 40.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "45"
+label_settings = SubResource("LabelSettings_hud")
+horizontal_alignment = 1
+
+[node name="EndScreen" parent="." instance=ExtResource("17_end")]
+
 [node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
 z_index = -1
 position = Vector2(335.5, 192.5)
 scale = Vector2(5.2421875, 3.1328125)
 texture = ExtResource("4_mx8sn")
-
-[node name="bee" parent="." unique_id=610651803 instance=ExtResource("11_t1rx8")]
 
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
@@ -74,11 +104,51 @@ autoplay = true
 [node name="Heal" parent="." unique_id=741174893 instance=ExtResource("9_8c41q")]
 position = Vector2(536, 60)
 
-[node name="Charger" parent="." unique_id=587149297 instance=ExtResource("11_8iemx")]
-position = Vector2(-121, 161)
+[node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
 
-[node name="enemy" parent="." unique_id=1753881692 instance=ExtResource("12_8iemx")]
-position = Vector2(-121, 161)
+[node name="Left" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(-300, 170)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Right" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(1226, 170)
+shape = SubResource("RectangleShape2D_wall_v")
+
+[node name="Top" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(463, -261)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="Bottom" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(463, 599)
+shape = SubResource("RectangleShape2D_wall_h")
+
+[node name="RunTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(20, 10)
+
+[node name="2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(650, 10)
+
+[node name="3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(20, 380)
+
+[node name="4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(650, 380)
+
+[node name="5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(335, 0)
+
+[node name="6" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(335, 390)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1411503139]
 position = Vector2(0, -19)
@@ -100,4 +170,7 @@ position = Vector2(0.625, -3.6763916)
 scale = Vector2(1, 0.9999999)
 shape = SubResource("RectangleShape2D_8c41q")
 
-[connection signal="heal" from="Heal" to="." method="_on_heal_heal"]
+[connection signal="died" from="toast" to="." method="_on_toast_died"]
+[connection signal="hp_changed" from="toast" to="all/JamJar" method="set_value"]
+[connection signal="timeout" from="RunTimer" to="." method="_on_run_timer_timeout"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

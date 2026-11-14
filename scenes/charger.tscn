@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://yg57e42d2qou" path="res://assets/packs/beetle/BeetleMove.png" id="2_move"]
 [ext_resource type="Texture2D" uid="uid://cy23ioftlicmd" path="res://assets/packs/beetle/BeetleAttack.png" id="3_attack"]
 [ext_resource type="Texture2D" uid="uid://cqrwnh3374g0l" path="res://assets/enemies/sweat.png" id="4_sweat"]
+[ext_resource type="Resource" path="res://data/enemies/beetle_stats.tres" id="5_stats"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 13.0
@@ -427,11 +428,12 @@ animations = [{
 "speed": 6.0
 }]
 
-[node name="Charger" type="CharacterBody2D" unique_id=1000015326]
+[node name="Charger" type="CharacterBody2D" unique_id=1000015326 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_script")
+stats = ExtResource("5_stats")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=650747698]
 shape = SubResource("CircleShape2D_body")
@@ -451,4 +453,4 @@ texture = ExtResource("4_sweat")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=961669563]
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=52247202]
-collision_mask = 5
+collision_mask = 3
