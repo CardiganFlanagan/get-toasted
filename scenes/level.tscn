@@ -68,9 +68,6 @@ grow_vertical = 2
 [node name="HP_Bar" parent="all" unique_id=583031211 instance=ExtResource("4_ppgk2")]
 visible = false
 
-[node name="pause_menu" parent="all" unique_id=2046811676 instance=ExtResource("2_w7c3h")]
-visible = false
-
 [node name="JamJar" parent="all" unique_id=1858017369 instance=ExtResource("6_olg7q")]
 flavor = 0
 heal_speed = 0.2
@@ -89,6 +86,9 @@ text = "45"
 label_settings = SubResource("LabelSettings_hud")
 horizontal_alignment = 1
 
+[node name="pause_menu" parent="all" unique_id=2046811676 instance=ExtResource("2_w7c3h")]
+visible = false
+
 [node name="EndScreen" parent="." instance=ExtResource("17_end")]
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=557589015]
@@ -100,6 +100,7 @@ texture = ExtResource("4_mx8sn")
 [node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=947901876]
 stream = ExtResource("6_2r41h")
 autoplay = true
+bus = &"Music"
 
 [node name="Heal" parent="." unique_id=741174893 instance=ExtResource("9_8c41q")]
 position = Vector2(536, 60)

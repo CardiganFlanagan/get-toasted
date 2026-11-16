@@ -1,37 +1,31 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cm4mqhfx8q5j1"]
 
-[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_script"]
-[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="2_estats"]
-[ext_resource type="Resource" path="res://data/enemies/chaser_stats.tres" id="3_chaser"]
-[ext_resource type="Resource" path="res://data/enemies/bee_stats.tres" id="4_bee"]
-[ext_resource type="Resource" path="res://data/enemies/beetle_stats.tres" id="5_beetle"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_stamp_paid.png" id="6_paid"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_stamp_burnt.png" id="7_burnt"]
+[ext_resource type="Script" uid="uid://bcsckhxbgcqg2" path="res://scripts/end_screen.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cljt4acum8pg5" path="res://scripts/data/enemy_stats.gd" id="2_estats"]
+[ext_resource type="Resource" uid="uid://dav7fd7ghmwff" path="res://data/enemies/chaser_stats.tres" id="3_chaser"]
+[ext_resource type="Resource" uid="uid://dbe8yp6lcmxir" path="res://data/enemies/bee_stats.tres" id="4_bee"]
+[ext_resource type="Resource" uid="uid://dyjpmmm8y3mni" path="res://data/enemies/beetle_stats.tres" id="5_beetle"]
+[ext_resource type="Texture2D" uid="uid://2k5waxkg4dcm" path="res://assets/ui/end/end_stamp_paid.png" id="6_paid"]
+[ext_resource type="Texture2D" uid="uid://jl0vfhs8hcqn" path="res://assets/ui/end/end_stamp_burnt.png" id="7_burnt"]
 [ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="8_font"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_printer.png" id="9_printer"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_receipt.png" id="10_receipt"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_dots.png" id="11_dots"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_dots_big.png" id="12_dots_big"]
+[ext_resource type="Texture2D" uid="uid://cxdbxtx5ntm12" path="res://assets/ui/end/end_printer.png" id="9_printer"]
+[ext_resource type="Texture2D" uid="uid://mo1uye2rwg7q" path="res://assets/ui/end/end_receipt.png" id="10_receipt"]
+[ext_resource type="Texture2D" uid="uid://ciease2rb6pma" path="res://assets/ui/end/end_dots.png" id="11_dots"]
+[ext_resource type="Texture2D" uid="uid://vgkt6615dgyg" path="res://assets/ui/end/end_dots_big.png" id="12_dots_big"]
 [ext_resource type="Texture2D" uid="uid://c1yiao4csxb0u" path="res://assets/toast_idle_wave_sheet.png" id="13_wave"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_toast_burnt_sheet.png" id="14_burnt_sheet"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_toaster_back_cold.png" id="15_back_cold"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_toaster_back_hot.png" id="16_back_hot"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_toaster_front_up.png" id="17_front_up"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_toaster_front_down.png" id="18_front_down"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_toast.png" id="19_hero"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_menu_card.png" id="20_card"]
-[ext_resource type="Texture2D" path="res://assets/ui/end/end_menu_card_pressed.png" id="21_card_pressed"]
+[ext_resource type="Texture2D" uid="uid://daswwssn6cde5" path="res://assets/ui/end/end_toast_burnt_sheet.png" id="14_burnt_sheet"]
+[ext_resource type="Texture2D" uid="uid://dyg0hklr31f8b" path="res://assets/ui/end/end_toaster_back_cold.png" id="15_back_cold"]
+[ext_resource type="Texture2D" uid="uid://dq4vfc3kc3xxy" path="res://assets/ui/end/end_toaster_back_hot.png" id="16_back_hot"]
+[ext_resource type="Texture2D" uid="uid://braqvyk006c0b" path="res://assets/ui/end/end_toaster_front_up.png" id="17_front_up"]
+[ext_resource type="Texture2D" uid="uid://743icq2onnxa" path="res://assets/ui/end/end_toaster_front_down.png" id="18_front_down"]
+[ext_resource type="Texture2D" uid="uid://bde2y0p2p34uv" path="res://assets/ui/end/end_toast.png" id="19_hero"]
+[ext_resource type="Texture2D" uid="uid://iymsf56bojrd" path="res://assets/ui/end/end_menu_card.png" id="20_card"]
+[ext_resource type="Texture2D" uid="uid://4o8q53pavtgn" path="res://assets/ui/end/end_menu_card_pressed.png" id="21_card_pressed"]
 
 [sub_resource type="Theme" id="Theme_receipt"]
 default_font = ExtResource("8_font")
 default_font_size = 16
 Label/colors/font_color = Color(0.286, 0.114, 0.118, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_caption"]
-font = ExtResource("8_font")
-font_size = 16
-outline_size = 4
-outline_color = Color(0.286, 0.161, 0.09, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_win0"]
 atlas = ExtResource("13_wave")
@@ -106,7 +100,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_win9")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 7.0
 }]
@@ -142,10 +136,116 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_burnt3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 6.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_caption"]
+font = ExtResource("8_font")
+outline_size = 4
+outline_color = Color(0.286, 0.161, 0.09, 1)
+
+[sub_resource type="Animation" id="Animation_again"]
+resource_name = "again"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Board/Again:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Board/Menu:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Board/Again/Hero:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Board/Again/Hero:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.3, 0.36, 0.38, 0.45),
+"transitions": PackedFloat32Array(2, 0.5, 2, 1, 2, 1),
+"update": 0,
+"values": [Vector2(32, -60), Vector2(32, 28), Vector2(32, 24), Vector2(32, 28), Vector2(32, 28), Vector2(32, 40)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Board/Again/Front:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.38),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("17_front_up"), ExtResource("18_front_down")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Board/Again:texture_normal")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.42),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("15_back_cold"), ExtResource("16_back_hot")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Board/Again:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.42, 0.45, 0.48, 0.51, 0.54),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(500, 50), Vector2(500, 50), Vector2(502, 49), Vector2(498, 50), Vector2(501, 51), Vector2(500, 50)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.95),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_restart"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_show"]
 resource_name = "show"
@@ -355,108 +455,6 @@ tracks/16/keys = {
 "values": [Vector2(790, 196), Vector2(790, 196), Vector2(500, 196), Vector2(506, 196)]
 }
 
-[sub_resource type="Animation" id="Animation_again"]
-resource_name = "again"
-length = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Board/Again:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Board/Menu:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Board/Again/Hero:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Board/Again/Hero:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.22, 0.3, 0.36, 0.38, 0.45),
-"transitions": PackedFloat32Array(2, 0.5, 2, 1, 2, 1),
-"update": 0,
-"values": [Vector2(32, -60), Vector2(32, 28), Vector2(32, 24), Vector2(32, 28), Vector2(32, 28), Vector2(32, 40)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Board/Again/Front:texture")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.38),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("17_front_up"), ExtResource("18_front_down")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Board/Again:texture_normal")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.42),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("15_back_cold"), ExtResource("16_back_hot")]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Board/Again:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.42, 0.45, 0.48, 0.51, 0.54),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(500, 50), Vector2(500, 50), Vector2(502, 49), Vector2(498, 50), Vector2(501, 51), Vector2(500, 50)]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.95),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_restart"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_to_menu"]
 resource_name = "to_menu"
 length = 0.6
@@ -530,7 +528,7 @@ _data = {
 &"to_menu": SubResource("Animation_to_menu")
 }
 
-[node name="EndScreen" type="CanvasLayer"]
+[node name="EndScreen" type="CanvasLayer" unique_id=101176790]
 process_mode = 3
 layer = 20
 visible = false
@@ -539,8 +537,7 @@ enemy_types = Array[ExtResource("2_estats")]([ExtResource("3_chaser"), ExtResour
 stamp_paid = ExtResource("6_paid")
 stamp_burnt = ExtResource("7_burnt")
 
-[node name="Dim" type="ColorRect" parent="."]
-layout_mode = 3
+[node name="Dim" type="ColorRect" parent="." unique_id=794473685]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -548,7 +545,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.098, 0.047, 0.071, 0.72)
 
-[node name="Board" type="Control" parent="."]
+[node name="Board" type="Control" parent="." unique_id=460996061]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -564,16 +561,16 @@ grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_receipt")
 
-[node name="Slot" type="Control" parent="Board"]
+[node name="Slot" type="Control" parent="Board" unique_id=1413421582]
 clip_contents = true
-layout_mode = 0
+anchors_preset = 0
 offset_left = 200.0
 offset_top = 11.0
 offset_right = 440.0
 offset_bottom = 360.0
 mouse_filter = 2
 
-[node name="Receipt" type="TextureRect" parent="Board/Slot"]
+[node name="Receipt" type="TextureRect" parent="Board/Slot" unique_id=703786514]
 layout_mode = 0
 offset_left = 17.0
 offset_top = -3.0
@@ -582,7 +579,7 @@ offset_bottom = 259.0
 mouse_filter = 2
 texture = ExtResource("10_receipt")
 
-[node name="Rows" type="VBoxContainer" parent="Board/Slot/Receipt"]
+[node name="Rows" type="VBoxContainer" parent="Board/Slot/Receipt" unique_id=541094988]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 44.0
@@ -590,107 +587,107 @@ offset_right = 191.0
 offset_bottom = 142.0
 theme_override_constants/separation = 2
 
-[node name="Row1" type="HBoxContainer" parent="Board/Slot/Receipt/Rows"]
-layout_mode = 2
+[node name="Row1" type="HBoxContainer" parent="Board/Slot/Receipt/Rows" unique_id=132283476]
 custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row1"]
+[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row1" unique_id=334665728]
 layout_mode = 2
 text = "Смена"
 
-[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row1"]
+[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row1" unique_id=1195970192]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_dots")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row1"]
+[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row1" unique_id=947047246]
 layout_mode = 2
 text = "Завтрак"
 
-[node name="Row2" type="HBoxContainer" parent="Board/Slot/Receipt/Rows"]
-layout_mode = 2
+[node name="Row2" type="HBoxContainer" parent="Board/Slot/Receipt/Rows" unique_id=2035019517]
 custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row2"]
+[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row2" unique_id=1169623269]
 layout_mode = 2
 text = "Время"
 
-[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row2"]
+[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row2" unique_id=1986199146]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_dots")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row2"]
+[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row2" unique_id=1268244624]
 layout_mode = 2
 text = "0:45"
 
-[node name="Row3" type="HBoxContainer" parent="Board/Slot/Receipt/Rows"]
-layout_mode = 2
+[node name="Row3" type="HBoxContainer" parent="Board/Slot/Receipt/Rows" unique_id=244375377]
 custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row3"]
+[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row3" unique_id=1360636244]
 layout_mode = 2
 text = "Вредители ×0"
 
-[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row3"]
+[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row3" unique_id=1681834526]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_dots")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row3"]
+[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row3" unique_id=146849413]
 layout_mode = 2
 text = "0"
 
-[node name="Row4" type="HBoxContainer" parent="Board/Slot/Receipt/Rows"]
-layout_mode = 2
+[node name="Row4" type="HBoxContainer" parent="Board/Slot/Receipt/Rows" unique_id=1401133523]
 custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row4"]
+[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row4" unique_id=2013007212]
 layout_mode = 2
 text = "Пчёлы ×0"
 
-[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row4"]
+[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row4" unique_id=60224871]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_dots")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row4"]
+[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row4" unique_id=1018993006]
 layout_mode = 2
 text = "0"
 
-[node name="Row5" type="HBoxContainer" parent="Board/Slot/Receipt/Rows"]
-layout_mode = 2
+[node name="Row5" type="HBoxContainer" parent="Board/Slot/Receipt/Rows" unique_id=108400750]
 custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row5"]
+[node name="Name" type="Label" parent="Board/Slot/Receipt/Rows/Row5" unique_id=525846518]
 layout_mode = 2
 text = "Жуки ×0"
 
-[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row5"]
+[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Rows/Row5" unique_id=1460204500]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_dots")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row5"]
+[node name="Value" type="Label" parent="Board/Slot/Receipt/Rows/Row5" unique_id=195130046]
 layout_mode = 2
 text = "0"
 
-[node name="Total" type="HBoxContainer" parent="Board/Slot/Receipt"]
+[node name="Total" type="HBoxContainer" parent="Board/Slot/Receipt" unique_id=1968499870]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 155.0
@@ -699,24 +696,24 @@ offset_bottom = 182.0
 pivot_offset = Vector2(88, 13)
 theme_override_constants/separation = 2
 
-[node name="Name" type="Label" parent="Board/Slot/Receipt/Total"]
+[node name="Name" type="Label" parent="Board/Slot/Receipt/Total" unique_id=1318032924]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "ИТОГО"
 
-[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Total"]
+[node name="Dots" type="TextureRect" parent="Board/Slot/Receipt/Total" unique_id=2073162726]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("12_dots_big")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Value" type="Label" parent="Board/Slot/Receipt/Total"]
+[node name="Value" type="Label" parent="Board/Slot/Receipt/Total" unique_id=1826876464]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "0"
 
-[node name="Record" type="Label" parent="Board/Slot/Receipt"]
+[node name="Record" type="Label" parent="Board/Slot/Receipt" unique_id=799186665]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 184.0
@@ -727,7 +724,7 @@ theme_override_font_sizes/font_size = 8
 text = "новый рекорд!"
 horizontal_alignment = 1
 
-[node name="Stamp" type="TextureRect" parent="Board/Slot/Receipt"]
+[node name="Stamp" type="TextureRect" parent="Board/Slot/Receipt" unique_id=642579657]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 197.0
@@ -738,31 +735,30 @@ pivot_offset = Vector2(50, 15)
 mouse_filter = 2
 texture = ExtResource("6_paid")
 
-[node name="Printer" type="TextureRect" parent="Board"]
+[node name="Printer" type="TextureRect" parent="Board" unique_id=39473774]
 layout_mode = 0
 offset_left = 200.0
-offset_top = 0.0
 offset_right = 440.0
 offset_bottom = 20.0
 mouse_filter = 2
 texture = ExtResource("9_printer")
 
-[node name="Toast" type="Node2D" parent="Board"]
+[node name="Toast" type="Node2D" parent="Board" unique_id=1419055345]
 position = Vector2(110, 205)
 
-[node name="Win" type="AnimatedSprite2D" parent="Board/Toast"]
+[node name="Win" type="AnimatedSprite2D" parent="Board/Toast" unique_id=405736407]
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_win")
 autoplay = "default"
 
-[node name="Burnt" type="AnimatedSprite2D" parent="Board/Toast"]
+[node name="Burnt" type="AnimatedSprite2D" parent="Board/Toast" unique_id=968559743]
 visible = false
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_burnt")
 autoplay = "default"
 offset = Vector2(0, -8)
 
-[node name="Caption" type="Label" parent="Board"]
+[node name="Caption" type="Label" parent="Board" unique_id=1052497375]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 272.0
@@ -772,17 +768,17 @@ text = "Смена закрыта!"
 label_settings = SubResource("LabelSettings_caption")
 horizontal_alignment = 1
 
-[node name="Again" type="TextureButton" parent="Board"]
+[node name="Again" type="TextureButton" parent="Board" unique_id=340969652]
 layout_mode = 0
 offset_left = 500.0
 offset_top = 50.0
-offset_right = 604.0
-offset_bottom = 156.0
+offset_right = 604.00006
+offset_bottom = 156.00003
 focus_mode = 0
+disabled = true
 texture_normal = ExtResource("15_back_cold")
 
-[node name="Hero" type="TextureRect" parent="Board/Again"]
-visible = false
+[node name="Hero" type="TextureRect" parent="Board/Again" unique_id=1131664401]
 layout_mode = 0
 offset_left = 32.0
 offset_top = -60.0
@@ -791,16 +787,14 @@ offset_bottom = -20.0
 mouse_filter = 2
 texture = ExtResource("19_hero")
 
-[node name="Front" type="TextureRect" parent="Board/Again"]
+[node name="Front" type="TextureRect" parent="Board/Again" unique_id=1534042269]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 104.0
 offset_bottom = 106.0
 mouse_filter = 2
 texture = ExtResource("17_front_up")
 
-[node name="Menu" type="TextureButton" parent="Board"]
+[node name="Menu" type="TextureButton" parent="Board" unique_id=1967581668]
 layout_mode = 0
 offset_left = 506.0
 offset_top = 196.0
@@ -808,13 +802,12 @@ offset_right = 598.0
 offset_bottom = 292.0
 pivot_offset = Vector2(46, 86)
 focus_mode = 0
+disabled = true
 texture_normal = ExtResource("20_card")
 texture_pressed = ExtResource("21_card_pressed")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_end")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1477292291]
+libraries/ = SubResource("AnimationLibrary_end")
 
 [connection signal="pressed" from="Board/Again" to="AnimationPlayer" method="play" binds= ["again"]]
 [connection signal="pressed" from="Board/Menu" to="AnimationPlayer" method="play" binds= ["to_menu"]]

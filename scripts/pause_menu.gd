@@ -1,25 +1,34 @@
 extends Control
 
+@onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var bell: TextureButton = $Board/Bell
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	visible = false
-	get_tree().paused = false
+	hide()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		if get_tree().paused:
-			visible = false
-			get_tree().paused = false
-		else:
-			visible = true
-			get_tree().paused = true
+	if not event.is_action_pressed("ui_cancel"):
+		return
+	if not visible and not get_tree().paused:
+		open()
+	elif visible and not bell.disabled:
+		anim.play("ring")
 
-func _on_button_pressed() -> void:
-	visible = false
+
+func open() -> void:
+	get_tree().paused = true
+	show()
+	anim.play("open")
+	anim.advance(0)
+
+
+func _resume() -> void:
+	hide()
 	get_tree().paused = false
+
+
+func _on_menu_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/Main_menu.tscn")

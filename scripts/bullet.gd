@@ -1,14 +1,12 @@
 class_name Bullet
 extends Area2D
 
-# Общий снаряд: жало пчелы (bullet.tscn) и крошка тоста (crumb.tscn).
-# speed и damage выставляет тот, кто стреляет, из своих .tres
 var speed: float
 var damage: int
 var direction := Vector2.RIGHT
 
-@export var life_time: float          # задаётся в сцене снаряда
-@export var target_group: StringName  # в кого попадает: player или enemies
+@export var life_time: float
+@export var target_group: StringName
 
 
 func _ready() -> void:

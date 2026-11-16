@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var amount: int  # сколько HP лечит, задаётся в heal.tscn
+@export var amount: int
 
 
 func _on_body_entered(body: Node2D) -> void:

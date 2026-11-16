@@ -1,9 +1,7 @@
 extends Node2D
-# Оружие тоста: само стреляет крошкой в ближайшего врага в радиусе.
-# Как часто стрелять — Timer в weapon.tscn, его время берём из stats.
 
-@export var stats: WeaponStats         # data/weapons/crumbs.tres
-@export var bullet_scene: PackedScene  # scenes/crumb.tscn
+@export var stats: WeaponStats
+@export var bullet_scene: PackedScene
 
 @onready var timer: Timer = $Timer
 

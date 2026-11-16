@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/volume_row.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/ui/volume/vol_cup_s_empty.png" id="2_s_empty"]
+[ext_resource type="Texture2D" path="res://assets/ui/volume/vol_cup_s_full.png" id="3_s_full"]
+[ext_resource type="Texture2D" path="res://assets/ui/volume/vol_cup_m_empty.png" id="4_m_empty"]
+[ext_resource type="Texture2D" path="res://assets/ui/volume/vol_cup_m_full.png" id="5_m_full"]
+[ext_resource type="Texture2D" path="res://assets/ui/volume/vol_cup_l_empty.png" id="6_l_empty"]
+[ext_resource type="Texture2D" path="res://assets/ui/volume/vol_cup_l_full.png" id="7_l_full"]
+[ext_resource type="AudioStream" path="res://sfxs/ui/glass_clink.wav" id="8_clink"]
+
+[node name="VolumeRow" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+script = ExtResource("1_script")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Музыка"
+vertical_alignment = 1
+
+[node name="Cups" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="S" type="TextureButton" parent="Cups"]
+layout_mode = 2
+pivot_offset = Vector2(13, 29)
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("2_s_empty")
+texture_pressed = ExtResource("3_s_full")
+
+[node name="M" type="TextureButton" parent="Cups"]
+layout_mode = 2
+pivot_offset = Vector2(13, 29)
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("4_m_empty")
+texture_pressed = ExtResource("5_m_full")
+
+[node name="L" type="TextureButton" parent="Cups"]
+layout_mode = 2
+pivot_offset = Vector2(13, 29)
+focus_mode = 0
+toggle_mode = true
+texture_normal = ExtResource("6_l_empty")
+texture_pressed = ExtResource("7_l_full")
+
+[node name="Clink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_clink")
+bus = &"SFX"
+
+[connection signal="pressed" from="Cups/S" to="." method="_on_cup_pressed" binds= [0]]
+[connection signal="pressed" from="Cups/M" to="." method="_on_cup_pressed" binds= [1]]
+[connection signal="pressed" from="Cups/L" to="." method="_on_cup_pressed" binds= [2]]

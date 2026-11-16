@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyStats" format=3]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dav7fd7ghmwff"]
 
-[ext_resource type="Script" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://cljt4acum8pg5" path="res://scripts/data/enemy_stats.gd" id="1_stats"]
 
 [resource]
 script = ExtResource("1_stats")
-title = "Вредители"
+title = "Муравьи"
 price = 10
 speed = 100.0
 max_hp = 3

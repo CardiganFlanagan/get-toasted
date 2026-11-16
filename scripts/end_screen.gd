@@ -1,8 +1,6 @@
 extends CanvasLayer
-# Чек в конце смены. Вся анимация лежит в AnimationPlayer (show, again, to_menu),
-# код только подставляет числа и выбирает: победа или поражение.
 
-@export var enemy_types: Array[EnemyStats]  # строки чека сверху вниз
+@export var enemy_types: Array[EnemyStats]
 @export var stamp_paid: Texture2D
 @export var stamp_burnt: Texture2D
 
@@ -24,15 +22,13 @@ func show_result(won: bool, shift: String, seconds: int, kills: Dictionary, tota
 	$Board/Caption.text = "Смена закрыта!" if won else "Тост подгорел..."
 	show()
 	$AnimationPlayer.play("show")
-	$AnimationPlayer.advance(0)  # сразу ставит всё на стартовые места, чтобы не мелькнул готовый чек
+	$AnimationPlayer.advance(0)
 
 
 func set_row(row: Node, title: String, value: String) -> void:
 	row.get_node("Name").text = title
 	row.get_node("Value").text = value
 
-
-# Эти две функции вызывают анимации again и to_menu (дорожка Call Method), когда кнопка доиграла
 
 func _restart() -> void:
 	get_tree().paused = false
@@ -44,7 +40,6 @@ func _to_menu() -> void:
 	get_tree().change_scene_to_file("res://scenes/Main_menu.tscn")
 
 
-# Esc открывает меню паузы и снимает паузу. Под чеком это не нужно: забираем нажатие себе.
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()

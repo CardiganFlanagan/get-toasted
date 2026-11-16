@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="PlayerStats" format=3]
+[gd_resource type="Resource" script_class="PlayerStats" format=3 uid="uid://bdgrtjyu5jn7y"]
 
-[ext_resource type="Script" path="res://scripts/data/player_stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://cflrmwmjg58wp" path="res://scripts/data/player_stats.gd" id="1_stats"]
 
 [resource]
 script = ExtResource("1_stats")
 speed = 200.0
-max_hp = 25
+max_hp = 50
 invincible_time = 1.0

@@ -1,6 +1,4 @@
 extends Enemy
-# Жук: Погоня → Замах → Рывок → Отдых. stats, target и hp — в enemy.gd
-
 
 enum State { CHASE, WINDUP, DASH, COOLDOWN }
 
@@ -28,7 +26,7 @@ func _physics_process(delta: float) -> void:
 			if velocity.length() > 1:
 				facing = velocity.normalized()
 			if to_player.length() < stats.vision_range and has_clear_line(to_player):
-				dash_dir = to_player.normalized()  
+				dash_dir = to_player.normalized()
 				facing = dash_dir
 				change_state(State.WINDUP, stats.windup_time)
 
@@ -57,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		change_state(State.COOLDOWN, stats.cooldown_time)
 
 	sweat.visible = state == State.COOLDOWN
-	sprite.play(ANIMS[state] + "_" + direction_name())
+	sprite.play(ANIMS[state] + "_" + side(facing))
 
 
 func change_state(new_state: State, time: float) -> void:
@@ -70,9 +68,3 @@ func has_clear_line(to_player: Vector2) -> bool:
 	ray.target_position = to_player
 	ray.force_raycast_update()
 	return ray.get_collider() == target
-
-
-func direction_name() -> String:
-	if abs(facing.x) > abs(facing.y):
-		return "right" if facing.x > 0 else "left"
-	return "down" if facing.y > 0 else "up"

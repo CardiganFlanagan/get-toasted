@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="LevelData" format=3]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://rl2ddx8umxsy"]
 
-[ext_resource type="Script" path="res://scripts/data/level_data.gd" id="1_level"]
-[ext_resource type="Script" path="res://scripts/data/wave.gd" id="2_wave"]
+[ext_resource type="Script" uid="uid://sm433acukkun" path="res://scripts/data/level_data.gd" id="1_level"]
+[ext_resource type="Script" uid="uid://cvasdgyjimyf3" path="res://scripts/data/wave.gd" id="2_wave"]
 [ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="3_chaser"]
 [ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="4_bee"]
-[ext_resource type="PackedScene" path="res://scenes/charger.tscn" id="5_beetle"]
+[ext_resource type="PackedScene" uid="uid://dmjk0o7weg183" path="res://scenes/charger.tscn" id="5_beetle"]
 
 [sub_resource type="Resource" id="Resource_wave1"]
 script = ExtResource("2_wave")

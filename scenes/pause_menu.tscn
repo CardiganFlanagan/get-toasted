@@ -1,125 +1,524 @@
 [gd_scene format=3 uid="uid://bms3wub0fsww7"]
 
-[ext_resource type="Texture2D" uid="uid://cj7edm7mp6sbt" path="res://assets/fone.png" id="2_5d2l8"]
-[ext_resource type="Texture2D" uid="uid://dyqt1o4o2lkmb" path="res://assets/pausee-export.png" id="4_5d2l8"]
-[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="4_7l7mv"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="2_font"]
+[ext_resource type="Texture2D" uid="uid://cj7edm7mp6sbt" path="res://assets/fone.png" id="3_notepad"]
+[ext_resource type="Texture2D" uid="uid://dyqt1o4o2lkmb" path="res://assets/pausee-export.png" id="4_brush"]
+[ext_resource type="Texture2D" path="res://assets/ui/pause/pause_stamp.png" id="5_stamp"]
+[ext_resource type="Texture2D" path="res://assets/ui/end/end_dots.png" id="6_dots"]
+[ext_resource type="Texture2D" path="res://assets/ui/pause/pause_icon_menu.png" id="7_icon_menu"]
+[ext_resource type="PackedScene" path="res://scenes/volume_row.tscn" id="8_volume"]
+[ext_resource type="Texture2D" path="res://assets/ui/pause/resume_bell.png" id="9_bell"]
+[ext_resource type="Texture2D" path="res://assets/ui/pause/resume_bell_pressed.png" id="10_bell_pressed"]
+[ext_resource type="Texture2D" path="res://assets/ui/pause/resume_bell_rings_sheet.png" id="11_rings"]
+[ext_resource type="AudioStream" path="res://sfxs/ui/bell_ding.wav" id="12_ding"]
 
-[sub_resource type="GDScript" id="GDScript_kukqi"]
-script/source = "extends Control
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_none"]
 
+[sub_resource type="Theme" id="Theme_pause"]
+default_font = ExtResource("2_font")
+default_font_size = 16
+Button/colors/font_color = Color(0.286, 0.114, 0.118, 1)
+Button/colors/font_focus_color = Color(0.286, 0.114, 0.118, 1)
+Button/colors/font_hover_color = Color(0.937, 0.333, 0.051, 1)
+Button/colors/font_hover_pressed_color = Color(0.937, 0.333, 0.051, 1)
+Button/colors/font_pressed_color = Color(0.937, 0.333, 0.051, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_none")
+Button/styles/hover = SubResource("StyleBoxEmpty_none")
+Button/styles/normal = SubResource("StyleBoxEmpty_none")
+Button/styles/pressed = SubResource("StyleBoxEmpty_none")
+Label/colors/font_color = Color(0.286, 0.114, 0.118, 1)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	visible = false
-	get_tree().paused = false
+[sub_resource type="AtlasTexture" id="AtlasTexture_brush"]
+atlas = ExtResource("4_brush")
+region = Rect2(19, 88, 59, 15)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ding"]
+font = ExtResource("2_font")
+font_size = 16
+font_color = Color(1, 0.8, 0.25, 1)
+outline_size = 4
+outline_color = Color(0.286, 0.161, 0.09, 1)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+[sub_resource type="AtlasTexture" id="Atlas_rings_default_0"]
+atlas = ExtResource("11_rings")
+region = Rect2(0, 0, 150, 100)
 
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed(\"ui_cancel\"):
-		if get_tree().paused:
-			visible = false
-			get_tree().paused = false
-		else:
-			visible = true
-			get_tree().paused = true
+[sub_resource type="AtlasTexture" id="Atlas_rings_default_1"]
+atlas = ExtResource("11_rings")
+region = Rect2(150, 0, 150, 100)
 
-func _on_button_pressed() -> void:
-	visible = false
-	get_tree().paused = false
+[sub_resource type="AtlasTexture" id="Atlas_rings_default_2"]
+atlas = ExtResource("11_rings")
+region = Rect2(300, 0, 150, 100)
 
+[sub_resource type="AtlasTexture" id="Atlas_rings_default_3"]
+atlas = ExtResource("11_rings")
+region = Rect2(450, 0, 150, 100)
 
-func _on_button_2_pressed() -> void:
-	get_tree().paused = false
-	get_tree().change_scene_to_file(\"res://scenes/Main_menu.tscn\")
-"
+[sub_resource type="AtlasTexture" id="Atlas_rings_default_4"]
+atlas = ExtResource("11_rings")
+region = Rect2(600, 0, 150, 100)
 
-[sub_resource type="LabelSettings" id="LabelSettings_5ysmq"]
-font = ExtResource("4_7l7mv")
-font_size = 12
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="AtlasTexture" id="Atlas_rings_default_5"]
+atlas = ExtResource("11_rings")
+region = Rect2(750, 0, 150, 100)
 
-[node name="pause_menu" type="Control" unique_id=2072513360]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rings"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("Atlas_rings_default_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_rings_default_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_rings_default_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_rings_default_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_rings_default_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("Atlas_rings_default_5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 18.0
+}]
+
+[sub_resource type="Animation" id="Animation_open"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dim:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Board/Card:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.38),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [Vector2(225, -250), Vector2(225, 70), Vector2(225, 63)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Board/Card:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.42),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [-0.08, 0.04, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Board/Bell:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.36, 0.46),
+"transitions": PackedFloat32Array(1, 0.5, 1, 1),
+"update": 0,
+"values": [Vector2(700, 228), Vector2(700, 228), Vector2(444, 228), Vector2(452, 228)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Board/Bell:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Board/Bell:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Board/Bell/Rings:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Board/Bell/Ding:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ring"]
+resource_name = "ring"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Board/Bell:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DingSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Board/Bell:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.4, 1.4, 1.4, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Board/Bell/Rings:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.36),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Board/Bell/Rings:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Board/Bell/Ding:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Board/Bell/Ding:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.7, 1.7), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Board/Bell/Ding:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(22, -14), Vector2(22, -24)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Board/Bell/Ding:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Board/Bell:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 2, 1),
+"update": 0,
+"values": [Vector2(452, 228), Vector2(454, 228), Vector2(450, 228), Vector2(453, 228), Vector2(451, 228), Vector2(452, 228), Vector2(452, 228), Vector2(700, 228)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Board/Card:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(225, 63), Vector2(225, 63), Vector2(225, 70), Vector2(225, -260)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Dim:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.55, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.85),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_resume"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pause"]
+_data = {
+&"open": SubResource("Animation_open"),
+&"ring": SubResource("Animation_ring")
+}
+
+[node name="pause_menu" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-script = SubResource("GDScript_kukqi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pause")
+script = ExtResource("1_script")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1894447315]
+[node name="Dim" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = -159.0
-offset_top = -137.0
-offset_right = 905.0
-offset_bottom = 501.0
-color = Color(0, 0, 0, 0.4392157)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.098, 0.047, 0.071, 0.55)
 
-[node name="ColorRect2" type="TextureRect" parent="." unique_id=163430316]
+[node name="Board" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 178.0
-offset_top = 18.999998
-offset_right = 398.0
-offset_bottom = 253.0
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.4, 1.4)
-texture = ExtResource("2_5d2l8")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="ColorRect2" unique_id=1044148202]
-layout_mode = 0
-offset_left = -18.571432
-offset_top = -60.71428
-offset_right = 171.42857
-offset_bottom = 173.28572
-scale = Vector2(2, 2)
 mouse_filter = 2
-texture = ExtResource("4_5d2l8")
-stretch_mode = 2
 
-[node name="Label" type="Label" parent="ColorRect2/TextureRect" unique_id=140766620]
+[node name="Card" type="TextureRect" parent="Board"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 85.5
-offset_right = 80.0
-offset_bottom = 102.5
-theme_override_font_sizes/font_size = 12
-text = "Напитки"
-label_settings = SubResource("LabelSettings_5ysmq")
-vertical_alignment = 1
+offset_left = 225.0
+offset_top = 63.0
+offset_right = 415.0
+offset_bottom = 297.0
+pivot_offset = Vector2(95, 0)
+texture = ExtResource("3_notepad")
 
-[node name="Button" type="Button" parent="ColorRect2" unique_id=1703249957]
+[node name="Stamp" type="TextureRect" parent="Board/Card"]
 layout_mode = 0
-offset_left = 14.285711
-offset_top = 41.428574
-offset_right = 198.2857
-offset_bottom = 85.42857
-theme_override_colors/font_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-theme_override_colors/font_hover_color = Color(0.18039216, 0.1254902, 0.9490196, 1)
-theme_override_fonts/font = ExtResource("4_7l7mv")
-theme_override_font_sizes/font_size = 30
-text = "Продолжить"
-flat = true
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 128.0
+offset_bottom = 64.0
+rotation = -0.05
+pivot_offset = Vector2(33, 13)
+mouse_filter = 2
+texture = ExtResource("5_stamp")
 
-[node name="Button2" type="Button" parent="ColorRect2" unique_id=250638517]
+[node name="Menu" type="Button" parent="Board/Card"]
 layout_mode = 0
-offset_left = 15.714289
-offset_top = 162.14287
-offset_right = 131.71431
-offset_bottom = 208.57146
-theme_override_colors/font_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-theme_override_colors/font_hover_color = Color(0.18039216, 0.1254902, 0.9490196, 1)
-theme_override_fonts/font = ExtResource("4_7l7mv")
-theme_override_font_sizes/font_size = 32
+offset_left = 17.0
+offset_top = 78.0
+offset_right = 163.0
+offset_bottom = 98.0
+focus_mode = 0
 text = "В меню"
 flat = true
+alignment = 0
 
-[connection signal="pressed" from="ColorRect2/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="ColorRect2/Button2" to="." method="_on_button_2_pressed"]
+[node name="Dots" type="TextureRect" parent="Board/Card/Menu"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 1.0
+offset_right = 128.0
+offset_bottom = 19.0
+mouse_filter = 2
+texture = ExtResource("6_dots")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Board/Card/Menu"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 3.0
+offset_right = 146.0
+offset_bottom = 17.0
+mouse_filter = 2
+texture = ExtResource("7_icon_menu")
+
+[node name="Drinks" type="TextureRect" parent="Board/Card"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 110.0
+offset_right = 132.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_brush")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Board/Card/Drinks"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.9, 1)
+text = "Напитки"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" parent="Board/Card" instance=ExtResource("8_volume")]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 136.0
+offset_right = 163.0
+offset_bottom = 168.0
+
+[node name="Sounds" parent="Board/Card" instance=ExtResource("8_volume")]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 174.0
+offset_right = 163.0
+offset_bottom = 206.0
+title = "Звуки"
+setting = "sounds"
+
+[node name="Bell" type="TextureButton" parent="Board"]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 228.0
+offset_right = 556.0
+offset_bottom = 334.0
+focus_mode = 0
+texture_normal = ExtResource("9_bell")
+texture_pressed = ExtResource("10_bell_pressed")
+
+[node name="Rings" type="AnimatedSprite2D" parent="Board/Bell"]
+visible = false
+position = Vector2(52, 54)
+sprite_frames = SubResource("SpriteFrames_rings")
+
+[node name="Ding" type="Label" parent="Board/Bell"]
+visible = false
+layout_mode = 0
+offset_left = 22.0
+offset_top = -14.0
+offset_right = 82.0
+offset_bottom = 6.0
+pivot_offset = Vector2(30, 10)
+text = "ДИНЬ!"
+label_settings = SubResource("LabelSettings_ding")
+horizontal_alignment = 1
+
+[node name="DingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ding")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pause")
+}
+
+[connection signal="pressed" from="Board/Card/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Board/Bell" to="AnimationPlayer" method="play" binds= ["ring"]]

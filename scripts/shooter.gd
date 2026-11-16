@@ -1,6 +1,4 @@
 extends Enemy
-# Пчела: Погоня → Отлёт → Прицел → Выстрел и отдых. stats, target и hp — в enemy.gd
-
 
 enum State { CHASE, RETREAT, AIM, COOLDOWN }
 
@@ -36,14 +34,14 @@ func _physics_process(delta: float) -> void:
 		State.AIM:
 			velocity = Vector2.ZERO
 			if not sees_player or dist > stats.vision_range:
-				change_state(State.CHASE, 0) 
+				change_state(State.CHASE, 0)
 			elif timer <= 0:
 				shoot()
 				change_state(State.COOLDOWN, stats.cooldown_time)
 
 		State.COOLDOWN:
 			velocity = Vector2.ZERO
-			if not animated_sprite_2d.is_playing(): 
+			if not animated_sprite_2d.is_playing():
 				animated_sprite_2d.play("tired")
 			if timer <= 0:
 				change_state(State.CHASE, 0)
@@ -66,12 +64,12 @@ func change_state(new_state: State, time: float) -> void:
 
 func can_see_player() -> bool:
 	ray_cast_2d.target_position = ray_cast_2d.to_local(target.global_position)
-	ray_cast_2d.force_raycast_update()  
+	ray_cast_2d.force_raycast_update()
 	return ray_cast_2d.get_collider() == target
 
 
 func shoot() -> void:
-	var bullet: Bullet = bullet_scene.instantiate()  
+	var bullet: Bullet = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = global_position
 	bullet.direction = global_position.direction_to(target.global_position)
@@ -83,6 +81,6 @@ func shoot() -> void:
 func _draw() -> void:
 	if state == State.AIM:
 		var to_target := to_local(target.global_position)
-		var dots := int(to_target.length() / 24) 
+		var dots := int(to_target.length() / 24)
 		for i in range(1, dots):
 			draw_rect(Rect2(to_target * i / dots - Vector2(2, 2), Vector2(4, 4)), Color("d64844"))

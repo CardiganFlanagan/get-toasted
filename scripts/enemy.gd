@@ -1,9 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
-# Общее для всех врагов: числа из EnemyStats, цель (тост), HP и смерть.
-# Преследователь, жук и пчела наследуют этот скрипт: extends Enemy.
 
-signal killed(stats: EnemyStats)  # уровень считает убитых для чека
+signal killed(stats: EnemyStats)
 
 @export var stats: EnemyStats
 
@@ -16,12 +14,17 @@ func _ready() -> void:
 	hp = stats.max_hp
 
 
-# Вызывает крошка тоста при попадании
 func take_damage(amount: int) -> void:
 	if hp <= 0:
-		return  # уже умирает: две крошки в одном кадре не убивают дважды
+		return
 	hp -= amount
-	create_tween().tween_property(self, "modulate", Color.WHITE, 0.15).from(Color.RED)  # вспышка
+	create_tween().tween_property(self, "modulate", Color.WHITE, 0.15).from(Color.RED)
 	if hp <= 0:
 		killed.emit(stats)
 		queue_free()
+
+
+func side(v: Vector2) -> String:
+	if abs(v.x) > abs(v.y):
+		return "right" if v.x > 0 else "left"
+	return "down" if v.y > 0 else "up"

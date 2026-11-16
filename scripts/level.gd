@@ -1,8 +1,6 @@
 extends Node2D
-# Одна сцена на все смены (Завтрак, Обед, Ужин): берёт LevelData по номеру из меню,
-# выпускает волны врагов и считает время до победы.
 
-@export var levels: Array[LevelData]  # level_1 = Завтрак, level_2 = Обед, level_3 = Ужин
+@export var levels: Array[LevelData]
 
 @onready var toast: CharacterBody2D = $toast
 @onready var jam_jar: JamJar = $all/JamJar
@@ -14,22 +12,20 @@ extends Node2D
 
 var level: LevelData
 var wave_index := 0
-var kills := {}  # EnemyStats → сколько убито, для чека
+var kills := {}
 
 
 func _ready() -> void:
 	level = levels[Game.level_index]
-	jam_jar.set_value(toast.hp, toast.max_hp)  # банка сразу показывает стартовое HP
+	jam_jar.set_value(toast.hp, toast.max_hp)
 	run_timer.start(level.time_limit)
 	start_next_wave()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	time_label.text = str(ceili(run_timer.time_left))
 	jam_jar.set_running(toast.velocity.length() > 10.0)
 
-
-# ---------- Волны ----------
 
 func start_next_wave() -> void:
 	if wave_index < level.waves.size():
@@ -47,8 +43,6 @@ func _on_spawn_timer_timeout() -> void:
 	start_next_wave()
 
 
-# ---------- Конец забега ----------
-
 func _on_enemy_killed(stats: EnemyStats) -> void:
 	kills[stats] = kills.get(stats, 0) + 1
 
@@ -64,7 +58,7 @@ func survived_seconds() -> int:
 	return int(level.time_limit - run_timer.time_left)
 
 
-func _on_run_timer_timeout() -> void:  # продержался до конца: победа
+func _on_run_timer_timeout() -> void:
 	end_run(true)
 
 

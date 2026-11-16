@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal hp_changed(hp: int, max_hp: int)
 signal died
 
-@export var stats: PlayerStats  # data/player/toast_stats.tres
+@export var stats: PlayerStats
 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
@@ -45,7 +45,6 @@ func take_damage(amount: int) -> void:
 		died.emit()
 		return
 
-	# мигаем два раза, пока неуязвимы
 	invincible = true
 	var blink := create_tween().set_loops(2)
 	blink.tween_property(sprite_2d, "modulate:a", 0.25, stats.invincible_time / 4)
