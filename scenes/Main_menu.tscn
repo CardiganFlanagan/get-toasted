@@ -18,19 +18,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_gq5c2"]
 font = ExtResource("5_q4q5n")
 
-[sub_resource type="Theme" id="Theme_card"]
-default_font = ExtResource("5_q4q5n")
-default_font_size = 16
-Button/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
-Button/colors/font_disabled_color = Color(0.28627452, 0.16078432, 0.09019608, 0.35)
-Button/colors/font_focus_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
-Button/colors/font_hover_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-Button/colors/font_hover_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-Button/colors/font_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-Label/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_levels"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
 font = ExtResource("5_q4q5n")
 font_size = 32
@@ -100,6 +87,19 @@ animations = [{
 "name": &"default",
 "speed": 7.0
 }]
+
+[sub_resource type="Theme" id="Theme_card"]
+default_font = ExtResource("5_q4q5n")
+default_font_size = 16
+Button/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+Button/colors/font_disabled_color = Color(0.28627452, 0.16078432, 0.09019608, 0.35)
+Button/colors/font_focus_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+Button/colors/font_hover_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+Button/colors/font_hover_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+Button/colors/font_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+Label/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_levels"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mluhb"]
 atlas = ExtResource("10_m5x4w")
@@ -386,7 +386,7 @@ sprite_frames = SubResource("SpriteFrames_riqys")
 stream = ExtResource("9_q4q5n")
 bus = &"SFX"
 
-[node name="Levels" type="VBoxContainer" parent="."]
+[node name="Levels" type="VBoxContainer" parent="." unique_id=536401307]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 150.0
@@ -394,7 +394,7 @@ offset_right = 190.0
 offset_bottom = 236.0
 theme = SubResource("Theme_card")
 
-[node name="Level1" type="Button" parent="Levels"]
+[node name="Level1" type="Button" parent="Levels" unique_id=268948409]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
@@ -403,7 +403,7 @@ text = "Завтрак"
 flat = true
 alignment = 0
 
-[node name="Level2" type="Button" parent="Levels"]
+[node name="Level2" type="Button" parent="Levels" unique_id=1210667746]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
@@ -412,7 +412,7 @@ text = "Обед"
 flat = true
 alignment = 0
 
-[node name="Level3" type="Button" parent="Levels"]
+[node name="Level3" type="Button" parent="Levels" unique_id=227678008]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
@@ -421,7 +421,7 @@ text = "Ужин"
 flat = true
 alignment = 0
 
-[node name="BestTime" type="Label" parent="."]
+[node name="BestTime" type="Label" parent="." unique_id=2059098816]
 layout_mode = 0
 offset_left = 46.0
 offset_top = 244.0
@@ -430,7 +430,7 @@ offset_bottom = 262.0
 theme = SubResource("Theme_card")
 text = "Рекорд: 0 с"
 
-[node name="Settings" type="VBoxContainer" parent="."]
+[node name="Settings" type="VBoxContainer" parent="." unique_id=968239949]
 layout_mode = 0
 offset_left = 270.0
 offset_top = 150.0
@@ -438,25 +438,24 @@ offset_right = 410.0
 offset_bottom = 236.0
 theme = SubResource("Theme_card")
 
-[node name="Music" parent="Settings" instance=ExtResource("14_volume")]
+[node name="Music" parent="Settings" unique_id=460803716 instance=ExtResource("14_volume")]
 layout_mode = 2
 
-[node name="Sounds" parent="Settings" instance=ExtResource("14_volume")]
+[node name="Sounds" parent="Settings" unique_id=725938048 instance=ExtResource("14_volume")]
 layout_mode = 2
 title = "Звуки"
 setting = "sounds"
 
-[node name="Reset" type="Button" parent="Settings"]
+[node name="Reset" type="Button" parent="Settings" unique_id=1898441963]
 layout_mode = 2
 focus_mode = 0
 text = "Стереть прогресс"
 flat = true
 alignment = 0
 
-[node name="ResetDialog" type="ConfirmationDialog" parent="."]
+[node name="ResetDialog" type="ConfirmationDialog" parent="." unique_id=172499753]
 title = "Сброс"
 size = Vector2i(300, 110)
-visible = false
 ok_button_text = "Удалить"
 dialog_text = "Удалить весь прогресс?
 Открытые смены и рекорд пропадут."
@@ -492,10 +491,10 @@ frame_progress = 0.50019723
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="animation_finished" from="TextureButton/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
-[connection signal="animation_finished" from="TextureButton2/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]
 [connection signal="pressed" from="Levels/Level1" to="." method="_on_level_pressed" binds= [0]]
 [connection signal="pressed" from="Levels/Level2" to="." method="_on_level_pressed" binds= [1]]
 [connection signal="pressed" from="Levels/Level3" to="." method="_on_level_pressed" binds= [2]]
 [connection signal="pressed" from="Settings/Reset" to="ResetDialog" method="popup_centered"]
 [connection signal="confirmed" from="ResetDialog" to="." method="_on_reset_dialog_confirmed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="animation_finished" from="TextureButton2/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]

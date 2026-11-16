@@ -775,7 +775,6 @@ offset_top = 50.0
 offset_right = 604.00006
 offset_bottom = 156.00003
 focus_mode = 0
-disabled = true
 texture_normal = ExtResource("15_back_cold")
 
 [node name="Hero" type="TextureRect" parent="Board/Again" unique_id=1131664401]
@@ -802,7 +801,6 @@ offset_right = 598.0
 offset_bottom = 292.0
 pivot_offset = Vector2(46, 86)
 focus_mode = 0
-disabled = true
 texture_normal = ExtResource("20_card")
 texture_pressed = ExtResource("21_card_pressed")
 
