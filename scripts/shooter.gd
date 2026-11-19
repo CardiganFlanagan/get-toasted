@@ -58,6 +58,7 @@ func change_state(new_state: State, time: float) -> void:
 			animated_sprite_2d.play("fly")
 		State.AIM:
 			animated_sprite_2d.play("aim")
+			$AimSound.play()
 		State.COOLDOWN:
 			animated_sprite_2d.play("shoot")
 

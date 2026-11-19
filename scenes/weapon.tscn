@@ -2,14 +2,19 @@
 
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="1_weapon"]
 [ext_resource type="Resource" path="res://data/weapons/crumbs.tres" id="2_stats"]
-[ext_resource type="PackedScene" path="res://scenes/crumb.tscn" id="3_crumb"]
+[ext_resource type="AudioStream" path="res://sfxs/random/shot.tres" id="3_shot"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_weapon")
 stats = ExtResource("2_stats")
-bullet_scene = ExtResource("3_crumb")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_shot")
+volume_db = -6.0
+max_polyphony = 2
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

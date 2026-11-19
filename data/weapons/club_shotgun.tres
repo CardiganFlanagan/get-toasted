@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/weapon_stats.gd" id="1_stats"]
+[ext_resource type="PackedScene" path="res://scenes/crumb.tscn" id="2_bullet"]
+
+[resource]
+script = ExtResource("1_stats")
+damage = 2
+cooldown = 0.7
+attack_range = 230.0
+bullet_speed = 400.0
+bullet_scene = ExtResource("2_bullet")
+count = 7
+spread = 10.0

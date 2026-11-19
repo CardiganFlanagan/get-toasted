@@ -22,6 +22,7 @@ buses/default_bus_layout="uid://bfi3vse81fjtg"
 [autoload]
 
 Game="*uid://bavn7dqrnoll"
+Music="*res://scenes/music.tscn"
 
 [display]
 

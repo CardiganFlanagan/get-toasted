@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RecipeData" format=3 uid="uid://c43ll1juekv3l"]
+
+[ext_resource type="Script" uid="uid://dxwtbdpsq0gos" path="res://scripts/data/recipe_data.gd" id="1_recipe"]
+[ext_resource type="Script" uid="uid://efhfb04envij" path="res://scripts/data/ingredient_data.gd" id="2_item"]
+[ext_resource type="Texture2D" uid="uid://xkxkewcg7enr" path="res://assets/items/sandwich.png" id="3_icon"]
+[ext_resource type="Resource" path="res://data/weapons/sandwich_shotgun.tres" id="4_weapon"]
+[ext_resource type="Resource" path="res://data/items/bread.tres" id="item_bread"]
+[ext_resource type="Resource" path="res://data/items/cheese.tres" id="item_cheese"]
+[ext_resource type="Resource" path="res://data/items/ham.tres" id="item_ham"]
+
+[resource]
+script = ExtResource("1_recipe")
+title = "Сэндвич-дробовик"
+icon = ExtResource("3_icon")
+ingredients = Array[ExtResource("2_item")]([ExtResource("item_bread"), ExtResource("item_cheese"), ExtResource("item_ham")])
+weapon = ExtResource("4_weapon")

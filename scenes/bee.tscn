@@ -2,103 +2,122 @@
 
 [ext_resource type="Script" uid="uid://t2rh7eb71vt6" path="res://scripts/shooter.gd" id="1_vie5o"]
 [ext_resource type="PackedScene" uid="uid://d3c1btdm8gapc" path="res://scenes/bullet.tscn" id="2_ogg2i"]
-[ext_resource type="Texture2D" uid="uid://dn20muh7qwppl" path="res://assets/enemies/bee_shooter.png" id="3_ogg2i"]
+[ext_resource type="Texture2D" path="res://assets/packs/bee/bee_walk.png" id="3_walk"]
 [ext_resource type="Resource" path="res://data/enemies/bee_stats.tres" id="4_stats"]
+[ext_resource type="PackedScene" path="res://scenes/crumb_pickup.tscn" id="drop_crumbs"]
+[ext_resource type="Texture2D" path="res://assets/packs/bee/bee_attack.png" id="5_attack"]
+[ext_resource type="Texture2D" path="res://assets/packs/bee/bee_idle.png" id="6_idle"]
+[ext_resource type="PackedScene" path="res://scenes/bee_death.tscn" id="7_death"]
+[ext_resource type="AudioStream" path="res://sfxs/ninja/bee_aim.wav" id="8_aim"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
 radius = 9.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee4"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(64, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk_0"]
+atlas = ExtResource("3_walk")
+region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee5"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(80, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk_1"]
+atlas = ExtResource("3_walk")
+region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee0"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk_2"]
+atlas = ExtResource("3_walk")
+region = Rect2(128, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee1"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_walk_3"]
+atlas = ExtResource("3_walk")
+region = Rect2(192, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee2"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_0"]
+atlas = ExtResource("5_attack")
+region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee3"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_1"]
+atlas = ExtResource("5_attack")
+region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee6"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(96, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_2"]
+atlas = ExtResource("5_attack")
+region = Rect2(128, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee7"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(112, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_attack_3"]
+atlas = ExtResource("5_attack")
+region = Rect2(192, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee8"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(128, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
+atlas = ExtResource("6_idle")
+region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bee9"]
-atlas = ExtResource("3_ogg2i")
-region = Rect2(144, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_1"]
+atlas = ExtResource("6_idle")
+region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ogg2i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_2"]
+atlas = ExtResource("6_idle")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idle_3"]
+atlas = ExtResource("6_idle")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bee"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee4")
+"texture": SubResource("AtlasTexture_attack_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee5")
+"texture": SubResource("AtlasTexture_attack_1")
 }],
-"loop": 1,
+"loop": true,
 "name": &"aim",
-"speed": 10.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee0")
+"texture": SubResource("AtlasTexture_walk_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee1")
+"texture": SubResource("AtlasTexture_walk_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee2")
+"texture": SubResource("AtlasTexture_walk_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee3")
+"texture": SubResource("AtlasTexture_walk_3")
 }],
-"loop": 1,
+"loop": true,
 "name": &"fly",
 "speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee6")
+"texture": SubResource("AtlasTexture_attack_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee7")
+"texture": SubResource("AtlasTexture_attack_3")
 }],
-"loop": 0,
+"loop": false,
 "name": &"shoot",
 "speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee8")
+"texture": SubResource("AtlasTexture_idle_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bee9")
+"texture": SubResource("AtlasTexture_idle_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idle_3")
 }],
-"loop": 1,
+"loop": true,
 "name": &"tired",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="bee" type="CharacterBody2D" unique_id=610651803 groups=["enemies"]]
@@ -107,6 +126,8 @@ collision_mask = 3
 script = ExtResource("1_vie5o")
 bullet_scene = ExtResource("2_ogg2i")
 stats = ExtResource("4_stats")
+drop_scene = ExtResource("drop_crumbs")
+death_scene = ExtResource("7_death")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1075953321]
 shape = SubResource("CircleShape2D_bhunq")
@@ -119,6 +140,13 @@ collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1048028765]
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_ogg2i")
+sprite_frames = SubResource("SpriteFrames_bee")
 animation = &"fly"
 autoplay = "fly"
+offset = Vector2(0, 7)
+
+[node name="AimSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_aim")
+volume_db = -3.0
+max_distance = 1200.0
+bus = &"SFX"

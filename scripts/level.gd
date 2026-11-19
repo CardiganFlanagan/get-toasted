@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var levels: Array[LevelData]
+@export var music: AudioStream
 
 @onready var toast: CharacterBody2D = $toast
 @onready var jam_jar: JamJar = $all/JamJar
@@ -17,6 +18,7 @@ var kills := {}
 
 func _ready() -> void:
 	level = levels[Game.level_index]
+	Music.play(music)
 	jam_jar.set_value(toast.hp, toast.max_hp)
 	run_timer.start(level.time_limit)
 	start_next_wave()

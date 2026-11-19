@@ -1,29 +1,29 @@
 [gd_scene format=3 uid="uid://d3c1btdm8gapc"]
 
 [ext_resource type="Script" uid="uid://boxvy4qekje6" path="res://scripts/bullet.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://7yoek2w1vtpl" path="res://assets/bee_stinger.png" id="2_y25gk"]
+[ext_resource type="Texture2D" path="res://assets/packs/bee/bee_fx.png" id="2_sting"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bullet"]
 radius = 5.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(0, 0, 8, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sting_0"]
+atlas = ExtResource("2_sting")
+region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
-atlas = ExtResource("2_y25gk")
-region = Rect2(8, 0, 8, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sting_1"]
+atlas = ExtResource("2_sting")
+region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sting"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5glv")
+"texture": SubResource("AtlasTexture_sting_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eoqba")
+"texture": SubResource("AtlasTexture_sting_1")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 12.0
 }]
@@ -40,6 +40,7 @@ shape = SubResource("CircleShape2D_bullet")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1622422163]
 scale = Vector2(2, 2)
+offset = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_sting")
 autoplay = "default"
 frame_progress = 0.33173612

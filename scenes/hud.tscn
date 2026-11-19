@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://bw4yhljxjsav2" path="res://scripts/hud.gd" id="1_5ysmq"]
 [ext_resource type="Texture2D" uid="uid://m7ebltwajry2" path="res://assets/button1.png" id="1_oo0fn"]
 [ext_resource type="Texture2D" uid="uid://cigwapbti4vol" path="res://assets/button2.png" id="2_5ysmq"]
+[ext_resource type="Texture2D" path="res://assets/items/crumb_icon.png" id="crumb_icon"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/plate_hud.png" id="plate_hud"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="font"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_crumbs"]
+font = ExtResource("font")
+font_size = 16
+outline_size = 4
+outline_color = Color(0.286, 0.161, 0.09, 1)
 
 [node name="HUD" type="Control" unique_id=1564659137]
 layout_mode = 3
@@ -33,5 +42,75 @@ offset_top = -102.0
 offset_right = 92.0
 offset_bottom = -62.0
 grow_vertical = 0
+
+[node name="Crumbs" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 60.0
+offset_right = 86.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Icon" type="TextureRect" parent="Crumbs"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("crumb_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Crumbs"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_crumbs")
+
+[node name="Plate" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 84.0
+offset_right = 138.0
+offset_bottom = 112.0
+mouse_filter = 2
+texture = ExtResource("plate_hud")
+
+[node name="Slots" type="HBoxContainer" parent="Plate"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 127.0
+offset_bottom = 24.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="1" type="TextureRect" parent="Plate/Slots"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="2" type="TextureRect" parent="Plate/Slots"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="3" type="TextureRect" parent="Plate/Slots"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="4" type="TextureRect" parent="Plate/Slots"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="5" type="TextureRect" parent="Plate/Slots"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="6" type="TextureRect" parent="Plate/Slots"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

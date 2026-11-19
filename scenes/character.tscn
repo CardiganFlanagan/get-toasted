@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" path="res://scenes/weapon.tscn" id="10_weapon"]
 [ext_resource type="Texture2D" uid="uid://ck7hy3n64wuu1" path="res://assets/toast_idle_sheet.png" id="1_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://brtnrxhli8pac" path="res://assets/toast_walk_sheet.png" id="2_lrhn5"]
+[ext_resource type="AudioStream" path="res://sfxs/random/hit.tres" id="snd_hit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my7n2"]
 atlas = ExtResource("1_rkhd4")
@@ -167,3 +168,7 @@ shape = SubResource("CapsuleShape2D_riqys")
 
 [node name="Weapon" parent="." instance=ExtResource("10_weapon")]
 
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("snd_hit")
+volume_db = -4.0
+bus = &"SFX"

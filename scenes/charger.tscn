@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cy23ioftlicmd" path="res://assets/packs/beetle/BeetleAttack.png" id="3_attack"]
 [ext_resource type="Texture2D" uid="uid://cqrwnh3374g0l" path="res://assets/enemies/sweat.png" id="4_sweat"]
 [ext_resource type="Resource" path="res://data/enemies/beetle_stats.tres" id="5_stats"]
+[ext_resource type="PackedScene" path="res://scenes/crumb_pickup.tscn" id="drop_crumbs"]
+[ext_resource type="PackedScene" path="res://scenes/poof.tscn" id="7_death"]
+[ext_resource type="AudioStream" path="res://sfxs/ninja/beetle_windup.wav" id="8_windup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 13.0
@@ -434,6 +437,8 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_script")
 stats = ExtResource("5_stats")
+drop_scene = ExtResource("drop_crumbs")
+death_scene = ExtResource("7_death")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=650747698]
 shape = SubResource("CircleShape2D_body")
@@ -454,3 +459,9 @@ texture = ExtResource("4_sweat")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=52247202]
 collision_mask = 3
+
+[node name="WindupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_windup")
+volume_db = -3.0
+max_distance = 1200.0
+bus = &"SFX"

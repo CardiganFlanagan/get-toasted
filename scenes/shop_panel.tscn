@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://bxnx4ojqq58s3"]
+
+[ext_resource type="Script" uid="uid://rwjcraifrh5i" path="res://scripts/shop_panel.gd" id="1_shop"]
+[ext_resource type="Texture2D" uid="uid://d3f5t1bbxdfp3" path="res://assets/ui/kitchen/panel_wood.png" id="2_wood"]
+[ext_resource type="PackedScene" path="res://scenes/price_tag.tscn" id="3_tag"]
+[ext_resource type="Script" uid="uid://efhfb04envij" path="res://scripts/data/ingredient_data.gd" id="4_item"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="font"]
+[ext_resource type="Resource" path="res://data/items/bread.tres" id="item_bread"]
+[ext_resource type="Resource" path="res://data/items/cheese.tres" id="item_cheese"]
+[ext_resource type="Resource" path="res://data/items/egg.tres" id="item_egg"]
+[ext_resource type="Resource" path="res://data/items/ham.tres" id="item_ham"]
+[ext_resource type="Resource" path="res://data/items/tomato.tres" id="item_tomato"]
+[ext_resource type="AudioStream" uid="uid://qtud0ia5skb4" path="res://sfxs/ui/purchase.wav" id="snd_buy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("font")
+font_color = Color(1, 0.965, 0.6, 1)
+outline_size = 4
+outline_color = Color(0.286, 0.161, 0.09, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_small"]
+font = ExtResource("font")
+font_size = 8
+font_color = Color(1, 0.882, 0.71, 1)
+outline_size = 2
+outline_color = Color(0.286, 0.161, 0.09, 1)
+
+[node name="ShopPanel" type="Control" unique_id=2112545220]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_shop")
+stock = Array[ExtResource("4_item")]([ExtResource("item_bread"), ExtResource("item_tomato"), ExtResource("item_cheese"), ExtResource("item_egg"), ExtResource("item_ham")])
+
+[node name="Panel" type="NinePatchRect" parent="." unique_id=1538896843]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -236.0
+offset_top = -148.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_wood")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Title" type="Label" parent="Panel" unique_id=176824982]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 100.0
+offset_bottom = 24.0
+text = "ЛАВКА"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="RestockLabel" type="Label" parent="Panel" unique_id=572348717]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 9.0
+offset_right = 218.0
+offset_bottom = 21.0
+text = "новый товар: 60"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 2
+
+[node name="Cards" type="HBoxContainer" parent="Panel" unique_id=1557596070]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 26.0
+offset_right = 218.0
+offset_bottom = 114.0
+theme_override_constants/separation = 8
+
+[node name="Tag1" parent="Panel/Cards" unique_id=500124945 instance=ExtResource("3_tag")]
+layout_mode = 2
+
+[node name="Tag2" parent="Panel/Cards" unique_id=1181623836 instance=ExtResource("3_tag")]
+layout_mode = 2
+
+[node name="Tag3" parent="Panel/Cards" unique_id=833696254 instance=ExtResource("3_tag")]
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="Panel" unique_id=1886332630]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 220.0
+offset_bottom = 132.0
+text = "Нажми на ценник, чтобы купить"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 1
+
+[node name="Restock" type="Timer" parent="." unique_id=1450238257]
+wait_time = 30.0
+autostart = true
+
+[node name="BuySound" type="AudioStreamPlayer" parent="." unique_id=238106195]
+stream = ExtResource("snd_buy")
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/Cards/Tag1" to="BuySound" method="play"]
+[connection signal="pressed" from="Panel/Cards/Tag1" to="." method="_on_card_pressed" binds= [0]]
+[connection signal="pressed" from="Panel/Cards/Tag2" to="BuySound" method="play"]
+[connection signal="pressed" from="Panel/Cards/Tag2" to="." method="_on_card_pressed" binds= [1]]
+[connection signal="pressed" from="Panel/Cards/Tag3" to="BuySound" method="play"]
+[connection signal="pressed" from="Panel/Cards/Tag3" to="." method="_on_card_pressed" binds= [2]]
+[connection signal="timeout" from="Restock" to="." method="restock"]

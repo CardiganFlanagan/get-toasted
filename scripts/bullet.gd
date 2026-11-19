@@ -7,20 +7,32 @@ var direction := Vector2.RIGHT
 
 @export var life_time: float
 @export var target_group: StringName
+@export var blast_radius: float
+@export var hit_effect: PackedScene
 
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	body_entered.connect(hit)
 
 
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 	life_time -= delta
 	if life_time <= 0:
-		queue_free()
+		hit(null)
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group(target_group):
+func hit(body: Node2D) -> void:
+	if is_queued_for_deletion():
+		return
+	if blast_radius > 0:
+		for node in get_tree().get_nodes_in_group(target_group):
+			if global_position.distance_to(node.global_position) < blast_radius:
+				node.take_damage(damage)
+	elif body and body.is_in_group(target_group):
 		body.take_damage(damage)
+	if hit_effect:
+		var effect: Node2D = hit_effect.instantiate()
+		effect.position = global_position
+		get_parent().add_child.call_deferred(effect)
 	queue_free()

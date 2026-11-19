@@ -9,7 +9,7 @@ extends CanvasLayer
 
 func show_result(won: bool, shift: String, seconds: int, kills: Dictionary, total: int, new_record: bool) -> void:
 	set_row(rows[0], "Смена", shift)
-	set_row(rows[1], "Время", "%d:%02d" % [seconds / 60, seconds % 60])
+	set_row(rows[1], "Время", "%d:%02d" % [floori(seconds / 60.0), seconds % 60])
 	for i in enemy_types.size():
 		var stats := enemy_types[i]
 		var count: int = kills.get(stats, 0)
@@ -20,6 +20,10 @@ func show_result(won: bool, shift: String, seconds: int, kills: Dictionary, tota
 	$Board/Toast/Win.visible = won
 	$Board/Toast/Burnt.visible = not won
 	$Board/Caption.text = "Смена закрыта!" if won else "Тост подгорел..."
+	if won:
+		$WinJingle.play()
+	else:
+		$LoseJingle.play()
 	show()
 	$AnimationPlayer.play("show")
 	$AnimationPlayer.advance(0)

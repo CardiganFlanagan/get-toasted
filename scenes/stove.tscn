@@ -1,0 +1,160 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/burner.gd" id="1_burner"]
+[ext_resource type="Texture2D" path="res://assets/arena/stove.png" id="2_stove"]
+[ext_resource type="Texture2D" path="res://assets/arena/burner_hot.png" id="3_hot"]
+[ext_resource type="Texture2D" path="res://assets/arena/burner_glow.png" id="4_glow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_burner"]
+radius = 30.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_add"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_heat"]
+resource_name = "heat"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Burner1/Hot:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.15, 1.3, 1.5, 1.65, 1.8, 2, 4, 4.6, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.15), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.8), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Burner1/Glow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 2.2, 4, 4.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Burner1/Tick:paused")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Burner2/Hot:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 4, 4.15, 4.3, 4.5, 4.65, 4.8, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.6), Color(1, 1, 1, 0.15), Color(1, 1, 1, 0.7), Color(1, 1, 1, 0.2), Color(1, 1, 1, 0.8), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Burner2/Glow:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 5, 5.2, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Burner2/Tick:paused")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_stove"]
+_data = {
+&"heat": SubResource("Animation_heat")
+}
+
+[node name="Stove" type="Node2D"]
+
+[node name="Hob" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_stove")
+offset = Vector2(0, -34)
+
+[node name="Burner1" type="Area2D" parent="."]
+position = Vector2(-54, -72)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_burner")
+
+[node name="Hot" type="Sprite2D" parent="Burner1"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hot")
+
+[node name="Glow" type="Sprite2D" parent="Burner1"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_add")
+scale = Vector2(2, 2)
+texture = ExtResource("4_glow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Burner1"]
+shape = SubResource("CircleShape2D_burner")
+
+[node name="Tick" type="Timer" parent="Burner1"]
+wait_time = 0.5
+autostart = true
+paused = true
+
+[node name="Burner2" type="Area2D" parent="."]
+position = Vector2(50, -72)
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_burner")
+
+[node name="Hot" type="Sprite2D" parent="Burner2"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_hot")
+
+[node name="Glow" type="Sprite2D" parent="Burner2"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_add")
+scale = Vector2(2, 2)
+texture = ExtResource("4_glow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Burner2"]
+shape = SubResource("CircleShape2D_burner")
+
+[node name="Tick" type="Timer" parent="Burner2"]
+wait_time = 0.5
+autostart = true
+paused = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_stove")
+}
+autoplay = &"heat"
+
+[connection signal="timeout" from="Burner1/Tick" to="Burner1" method="_on_tick_timeout"]
+[connection signal="timeout" from="Burner2/Tick" to="Burner2" method="_on_tick_timeout"]

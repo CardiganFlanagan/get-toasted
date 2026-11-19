@@ -3,6 +3,7 @@ extends Resource
 
 @export var title: String
 @export var price: int
+@export var crumbs: int
 @export var speed: float
 @export var max_hp: int
 @export var damage: int

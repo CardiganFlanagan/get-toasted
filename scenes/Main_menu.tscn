@@ -14,22 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://402o54wog0qv" path="res://assets/exit_sign_front.png" id="12_0mtrp"]
 [ext_resource type="Texture2D" uid="uid://c2qjcfphg1etj" path="res://assets/exit_sign_flip.png" id="13_tpbep"]
 [ext_resource type="PackedScene" path="res://scenes/volume_row.tscn" id="14_volume"]
+[ext_resource type="Texture2D" uid="uid://csanqhj61rdts" path="res://assets/title/title_b_sign.png" id="t1_sign"]
+[ext_resource type="Texture2D" uid="uid://672wd0ovim87" path="res://assets/title/title_b_chain_link.png" id="t2_chain"]
+[ext_resource type="AudioStream" uid="uid://rmva434nfwyj" path="res://sfxs/ui/button_pressed.wav" id="t3_click"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gq5c2"]
 font = ExtResource("5_q4q5n")
-
-[sub_resource type="Theme" id="Theme_card"]
-default_font = ExtResource("5_q4q5n")
-default_font_size = 16
-Button/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
-Button/colors/font_disabled_color = Color(0.28627452, 0.16078432, 0.09019608, 0.35)
-Button/colors/font_focus_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
-Button/colors/font_hover_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-Button/colors/font_hover_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-Button/colors/font_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
-Label/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_levels"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
 font = ExtResource("5_q4q5n")
@@ -100,6 +90,206 @@ animations = [{
 "name": &"default",
 "speed": 7.0
 }]
+
+[sub_resource type="Theme" id="Theme_card"]
+default_font = ExtResource("5_q4q5n")
+default_font_size = 16
+Button/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+Button/colors/font_disabled_color = Color(0.28627452, 0.16078432, 0.09019608, 0.35)
+Button/colors/font_focus_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+Button/colors/font_hover_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+Button/colors/font_hover_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+Button/colors/font_pressed_color = Color(0.9372549, 0.33333334, 0.050980393, 1)
+Label/colors/font_color = Color(0.28627452, 0.16078432, 0.09019608, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_levels"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_0"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_1"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_2"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(80, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_3"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(120, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_4"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(160, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_5"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(200, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_6"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(240, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_7"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(280, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_8"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(320, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hero_9"]
+atlas = ExtResource("10_m5x4w")
+region = Rect2(360, 0, 40, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hero"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hero_9")
+}],
+"loop": 0,
+"name": &"wave",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_title_reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(180, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleHero:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleHero:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(382, 59)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleHero:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+
+[sub_resource type="Animation" id="Animation_title_drop"]
+resource_name = "drop"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.29, 0.33, 0.37, 0.41, 0.45, 0.49, 0.53, 0.57, 0.61, 0.65, 0.69, 0.73, 0.77, 0.81, 0.85, 0.89, 0.93, 0.97, 1.01, 1.05, 1.09, 1.13, 1.17, 1.21, 1.25, 1.29, 1.33, 1.37, 1.41, 1.45, 1.49, 1.53, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(180, -116), Vector2(180, -116), Vector2(180, -115), Vector2(180, -112), Vector2(180, -107), Vector2(180, -100), Vector2(180, -91), Vector2(180, -80), Vector2(180, -67), Vector2(180, -52), Vector2(180, -35), Vector2(180, -16), Vector2(180, 4), Vector2(180, 13), Vector2(180, 15), Vector2(180, 14), Vector2(180, 12), Vector2(180, 10), Vector2(180, 8), Vector2(180, 8), Vector2(180, 9), Vector2(180, 10), Vector2(180, 10), Vector2(180, 11), Vector2(180, 11), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10), Vector2(180, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleHero:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleHero:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.64, 1.68, 1.72, 1.76, 1.8, 1.84, 1.88, 1.92, 1.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(416, 59), Vector2(416, 59), Vector2(412, 53), Vector2(408, 48), Vector2(404, 45), Vector2(400, 43), Vector2(397, 43), Vector2(393, 46), Vector2(389, 50), Vector2(385, 55), Vector2(382, 59)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TitleHero:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.95, 2.05, 2.15, 2.25, 2.35, 2.45, 2.55, 2.65, 2.75, 2.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_title"]
+_data = {
+&"RESET": SubResource("Animation_title_reset"),
+&"drop": SubResource("Animation_title_drop")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mluhb"]
 atlas = ExtResource("10_m5x4w")
@@ -279,6 +469,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2w1r8")
+music = ExtResource("11_xkoo8")
 
 [node name="Menu" type="TextureRect" parent="." unique_id=1409123338]
 z_index = -1
@@ -386,7 +577,7 @@ sprite_frames = SubResource("SpriteFrames_riqys")
 stream = ExtResource("9_q4q5n")
 bus = &"SFX"
 
-[node name="Levels" type="VBoxContainer" parent="."]
+[node name="Levels" type="VBoxContainer" parent="." unique_id=536401307]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 150.0
@@ -394,7 +585,7 @@ offset_right = 190.0
 offset_bottom = 236.0
 theme = SubResource("Theme_card")
 
-[node name="Level1" type="Button" parent="Levels"]
+[node name="Level1" type="Button" parent="Levels" unique_id=268948409]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
@@ -403,7 +594,7 @@ text = "Завтрак"
 flat = true
 alignment = 0
 
-[node name="Level2" type="Button" parent="Levels"]
+[node name="Level2" type="Button" parent="Levels" unique_id=1210667746]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
@@ -412,7 +603,7 @@ text = "Обед"
 flat = true
 alignment = 0
 
-[node name="Level3" type="Button" parent="Levels"]
+[node name="Level3" type="Button" parent="Levels" unique_id=227678008]
 layout_mode = 2
 focus_mode = 0
 toggle_mode = true
@@ -421,7 +612,7 @@ text = "Ужин"
 flat = true
 alignment = 0
 
-[node name="BestTime" type="Label" parent="."]
+[node name="BestTime" type="Label" parent="." unique_id=2059098816]
 layout_mode = 0
 offset_left = 46.0
 offset_top = 244.0
@@ -430,7 +621,7 @@ offset_bottom = 262.0
 theme = SubResource("Theme_card")
 text = "Рекорд: 0 с"
 
-[node name="Settings" type="VBoxContainer" parent="."]
+[node name="Settings" type="VBoxContainer" parent="." unique_id=968239949]
 layout_mode = 0
 offset_left = 270.0
 offset_top = 150.0
@@ -438,40 +629,82 @@ offset_right = 410.0
 offset_bottom = 236.0
 theme = SubResource("Theme_card")
 
-[node name="Music" parent="Settings" instance=ExtResource("14_volume")]
+[node name="Music" parent="Settings" unique_id=460803716 instance=ExtResource("14_volume")]
 layout_mode = 2
 
-[node name="Sounds" parent="Settings" instance=ExtResource("14_volume")]
+[node name="Sounds" parent="Settings" unique_id=725938048 instance=ExtResource("14_volume")]
 layout_mode = 2
 title = "Звуки"
 setting = "sounds"
 
-[node name="Reset" type="Button" parent="Settings"]
+[node name="Reset" type="Button" parent="Settings" unique_id=1898441963]
 layout_mode = 2
 focus_mode = 0
 text = "Стереть прогресс"
 flat = true
 alignment = 0
 
-[node name="ResetDialog" type="ConfirmationDialog" parent="."]
+[node name="ResetDialog" type="ConfirmationDialog" parent="." unique_id=172499753]
 title = "Сброс"
 size = Vector2i(300, 110)
-visible = false
 ok_button_text = "Удалить"
 dialog_text = "Удалить весь прогресс?
 Открытые смены и рекорд пропадут."
 cancel_button_text = "Отмена"
+
+[node name="Title" type="TextureRect" parent="." unique_id=1395597209]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 10.0
+offset_right = 396.0
+offset_bottom = 76.0
+mouse_filter = 2
+texture = ExtResource("t1_sign")
+
+[node name="ChainLeft" type="TextureRect" parent="Title" unique_id=380921485]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 22.0
+offset_top = -398.0
+offset_right = 27.0
+offset_bottom = 4.0
+mouse_filter = 2
+texture = ExtResource("t2_chain")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ChainRight" type="TextureRect" parent="Title" unique_id=672930814]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 189.0
+offset_top = -398.0
+offset_right = 194.0
+offset_bottom = 4.0
+mouse_filter = 2
+texture = ExtResource("t2_chain")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TitleHero" type="AnimatedSprite2D" parent="." unique_id=114381189]
+position = Vector2(382, 59)
+sprite_frames = SubResource("SpriteFrames_hero")
+animation = &"wave"
+frame = 9
+centered = false
+
+[node name="TitleDrop" type="AnimationPlayer" parent="." unique_id=1130520820]
+libraries/ = SubResource("AnimationLibrary_title")
+autoplay = &"drop"
+
+[node name="Click" type="AudioStreamPlayer" parent="." unique_id=624278554]
+stream = ExtResource("t3_click")
+bus = &"SFX"
 
 [node name="Toast" type="AnimatedSprite2D" parent="." unique_id=1539780865]
 position = Vector2(318, 297)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_bhunq")
 autoplay = "default"
-
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1582439407]
-stream = ExtResource("11_xkoo8")
-autoplay = true
-bus = &"Music"
 
 [node name="TextureButton2" type="TextureButton" parent="." unique_id=1323748280]
 layout_mode = 1
@@ -492,10 +725,15 @@ frame_progress = 0.50019723
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="animation_finished" from="TextureButton/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
-[connection signal="animation_finished" from="TextureButton2/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]
+[connection signal="pressed" from="Levels/Level1" to="Click" method="play"]
 [connection signal="pressed" from="Levels/Level1" to="." method="_on_level_pressed" binds= [0]]
+[connection signal="pressed" from="Levels/Level2" to="Click" method="play"]
 [connection signal="pressed" from="Levels/Level2" to="." method="_on_level_pressed" binds= [1]]
+[connection signal="pressed" from="Levels/Level3" to="Click" method="play"]
 [connection signal="pressed" from="Levels/Level3" to="." method="_on_level_pressed" binds= [2]]
 [connection signal="pressed" from="Settings/Reset" to="ResetDialog" method="popup_centered"]
+[connection signal="pressed" from="Settings/Reset" to="Click" method="play"]
 [connection signal="confirmed" from="ResetDialog" to="." method="_on_reset_dialog_confirmed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton2" to="Click" method="play"]
+[connection signal="animation_finished" from="TextureButton2/AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]

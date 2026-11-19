@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dm7hiul462nfg" path="res://scripts/enemy2.gd" id="1_script"]
 [ext_resource type="Resource" path="res://data/enemies/chaser_stats.tres" id="2_stats"]
-[ext_resource type="Texture2D" path="res://assets/enemies/ant/AntMove.png" id="3_move"]
-[ext_resource type="Texture2D" path="res://assets/enemies/ant/AntAttack.png" id="4_attack"]
+[ext_resource type="Texture2D" path="res://assets/packs/stranded/medium_bug_move.png" id="3_move"]
+[ext_resource type="Texture2D" path="res://assets/packs/stranded/medium_bug_attack.png" id="4_attack"]
+[ext_resource type="PackedScene" path="res://scenes/crumb_pickup.tscn" id="drop_crumbs"]
+[ext_resource type="PackedScene" path="res://scenes/bug_death.tscn" id="5_death"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 12.0
@@ -11,327 +13,143 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_bite"]
 radius = 18.0
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_down_0"]
-atlas = ExtResource("4_attack")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_down_1"]
-atlas = ExtResource("4_attack")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_down_2"]
-atlas = ExtResource("4_attack")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_down_3"]
-atlas = ExtResource("4_attack")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_down_4"]
-atlas = ExtResource("4_attack")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_down_5"]
-atlas = ExtResource("4_attack")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_left_0"]
-atlas = ExtResource("4_attack")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_left_1"]
-atlas = ExtResource("4_attack")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_left_2"]
-atlas = ExtResource("4_attack")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_left_3"]
-atlas = ExtResource("4_attack")
-region = Rect2(96, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_left_4"]
-atlas = ExtResource("4_attack")
-region = Rect2(128, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_left_5"]
-atlas = ExtResource("4_attack")
-region = Rect2(160, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_right_0"]
-atlas = ExtResource("4_attack")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_right_1"]
-atlas = ExtResource("4_attack")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_right_2"]
-atlas = ExtResource("4_attack")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_right_3"]
-atlas = ExtResource("4_attack")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_right_4"]
-atlas = ExtResource("4_attack")
-region = Rect2(128, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_right_5"]
-atlas = ExtResource("4_attack")
-region = Rect2(160, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_up_0"]
-atlas = ExtResource("4_attack")
-region = Rect2(0, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_up_1"]
-atlas = ExtResource("4_attack")
-region = Rect2(32, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_up_2"]
-atlas = ExtResource("4_attack")
-region = Rect2(64, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_up_3"]
-atlas = ExtResource("4_attack")
-region = Rect2(96, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_up_4"]
-atlas = ExtResource("4_attack")
-region = Rect2(128, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_bite_up_5"]
-atlas = ExtResource("4_attack")
-region = Rect2(160, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_down_0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_0"]
 atlas = ExtResource("3_move")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_down_1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_1"]
 atlas = ExtResource("3_move")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(34, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_down_2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_2"]
 atlas = ExtResource("3_move")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(68, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_down_3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_3"]
 atlas = ExtResource("3_move")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(102, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_left_0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_4"]
 atlas = ExtResource("3_move")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(136, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_left_1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_5"]
 atlas = ExtResource("3_move")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(170, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_left_2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_6"]
 atlas = ExtResource("3_move")
-region = Rect2(64, 32, 32, 32)
+region = Rect2(204, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_left_3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_move_7"]
 atlas = ExtResource("3_move")
-region = Rect2(96, 32, 32, 32)
+region = Rect2(238, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_right_0"]
-atlas = ExtResource("3_move")
-region = Rect2(0, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_0"]
+atlas = ExtResource("4_attack")
+region = Rect2(0, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_right_1"]
-atlas = ExtResource("3_move")
-region = Rect2(32, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_1"]
+atlas = ExtResource("4_attack")
+region = Rect2(34, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_right_2"]
-atlas = ExtResource("3_move")
-region = Rect2(64, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_2"]
+atlas = ExtResource("4_attack")
+region = Rect2(68, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_right_3"]
-atlas = ExtResource("3_move")
-region = Rect2(96, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_3"]
+atlas = ExtResource("4_attack")
+region = Rect2(102, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_up_0"]
-atlas = ExtResource("3_move")
-region = Rect2(0, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_4"]
+atlas = ExtResource("4_attack")
+region = Rect2(136, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_up_1"]
-atlas = ExtResource("3_move")
-region = Rect2(32, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_5"]
+atlas = ExtResource("4_attack")
+region = Rect2(170, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_up_2"]
-atlas = ExtResource("3_move")
-region = Rect2(64, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_6"]
+atlas = ExtResource("4_attack")
+region = Rect2(204, 0, 34, 37)
 
-[sub_resource type="AtlasTexture" id="Atlas_ant_move_up_3"]
-atlas = ExtResource("3_move")
-region = Rect2(96, 96, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_7"]
+atlas = ExtResource("4_attack")
+region = Rect2(238, 0, 34, 37)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ant"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_8"]
+atlas = ExtResource("4_attack")
+region = Rect2(272, 0, 34, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bite_9"]
+atlas = ExtResource("4_attack")
+region = Rect2(306, 0, 34, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bug"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_down_0")
+"texture": SubResource("AtlasTexture_bite_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_down_1")
+"texture": SubResource("AtlasTexture_bite_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_down_2")
+"texture": SubResource("AtlasTexture_bite_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_down_3")
+"texture": SubResource("AtlasTexture_bite_3")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_down_4")
+"texture": SubResource("AtlasTexture_bite_4")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_down_5")
+"texture": SubResource("AtlasTexture_bite_5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bite_6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bite_7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bite_8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bite_9")
 }],
 "loop": false,
-"name": &"bite_down",
-"speed": 14.0
+"name": &"bite",
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_left_0")
+"texture": SubResource("AtlasTexture_move_0")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_left_1")
+"texture": SubResource("AtlasTexture_move_1")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_left_2")
+"texture": SubResource("AtlasTexture_move_2")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_left_3")
+"texture": SubResource("AtlasTexture_move_3")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_left_4")
+"texture": SubResource("AtlasTexture_move_4")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_left_5")
-}],
-"loop": false,
-"name": &"bite_left",
-"speed": 14.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_right_0")
+"texture": SubResource("AtlasTexture_move_5")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_right_1")
+"texture": SubResource("AtlasTexture_move_6")
 }, {
 "duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_right_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_right_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_right_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_right_5")
-}],
-"loop": false,
-"name": &"bite_right",
-"speed": 14.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_up_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_up_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_up_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_up_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_up_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_bite_up_5")
-}],
-"loop": false,
-"name": &"bite_up",
-"speed": 14.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_down_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_down_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_down_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_down_3")
+"texture": SubResource("AtlasTexture_move_7")
 }],
 "loop": true,
-"name": &"move_down",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_left_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_left_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_left_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_left_3")
-}],
-"loop": true,
-"name": &"move_left",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_right_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_right_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_right_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_right_3")
-}],
-"loop": true,
-"name": &"move_right",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_up_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_up_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_up_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("Atlas_ant_move_up_3")
-}],
-"loop": true,
-"name": &"move_up",
-"speed": 10.0
+"name": &"move",
+"speed": 12.0
 }]
 
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
@@ -340,15 +158,18 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_script")
 stats = ExtResource("2_stats")
+drop_scene = ExtResource("drop_crumbs")
+death_scene = ExtResource("5_death")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_body")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_ant")
-animation = &"move_down"
-autoplay = "move_down"
+sprite_frames = SubResource("SpriteFrames_bug")
+animation = &"move"
+autoplay = "move"
+offset = Vector2(2, 1)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

@@ -6,6 +6,7 @@
 script = ExtResource("1_stats")
 title = "Муравьи"
 price = 10
+crumbs = 2
 speed = 100.0
 max_hp = 3
 damage = 4

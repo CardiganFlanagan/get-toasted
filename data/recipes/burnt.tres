@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeData" format=3]
+
+[ext_resource type="Script" path="res://scripts/data/recipe_data.gd" id="1_recipe"]
+[ext_resource type="Script" path="res://scripts/data/ingredient_data.gd" id="2_item"]
+[ext_resource type="Texture2D" path="res://assets/items/burnt.png" id="3_icon"]
+[ext_resource type="Resource" path="res://data/weapons/burnt.tres" id="4_weapon"]
+
+[resource]
+script = ExtResource("1_recipe")
+title = "Подгорело!"
+icon = ExtResource("3_icon")
+ingredients = Array[ExtResource("2_item")]([])
+weapon = ExtResource("4_weapon")

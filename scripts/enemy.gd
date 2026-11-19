@@ -4,6 +4,8 @@ extends CharacterBody2D
 signal killed(stats: EnemyStats)
 
 @export var stats: EnemyStats
+@export var drop_scene: PackedScene
+@export var death_scene: PackedScene
 
 var target: CharacterBody2D
 var hp: int
@@ -21,7 +23,20 @@ func take_damage(amount: int) -> void:
 	create_tween().tween_property(self, "modulate", Color.WHITE, 0.15).from(Color.RED)
 	if hp <= 0:
 		killed.emit(stats)
+		spawn(death_scene)
+		var drop: Pickup = spawn(drop_scene)
+		if drop:
+			drop.amount = stats.crumbs
 		queue_free()
+
+
+func spawn(scene: PackedScene) -> Node2D:
+	if scene == null:
+		return null
+	var node: Node2D = scene.instantiate()
+	node.position = position
+	get_parent().add_child.call_deferred(node)
+	return node
 
 
 func side(v: Vector2) -> String:

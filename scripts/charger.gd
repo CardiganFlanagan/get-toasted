@@ -62,6 +62,8 @@ func change_state(new_state: State, time: float) -> void:
 	state = new_state
 	timer = time
 	sprite.modulate = Color.WHITE
+	if state == State.WINDUP:
+		$WindupSound.play()
 
 
 func has_clear_line(to_player: Vector2) -> bool:

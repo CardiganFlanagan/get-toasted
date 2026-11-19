@@ -1,5 +1,7 @@
 extends Control
 
+@export var music: AudioStream
+
 @onready var texture_button: TextureButton = $TextureButton
 @onready var animated_sprite_2d: AnimatedSprite2D = $TextureButton/AnimatedSprite2D
 @onready var sfx: AudioStreamPlayer2D = $TextureButton/SFX
@@ -10,6 +12,7 @@ extends Control
 
 
 func _ready() -> void:
+	Music.play(music)
 	for i in level_buttons.size():
 		level_buttons[i].disabled = i >= Game.data.unlocked
 	level_buttons[Game.level_index].button_pressed = true

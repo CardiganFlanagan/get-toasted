@@ -17,7 +17,7 @@ func _ready() -> void:
 	hp = max_hp
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = direction * stats.speed
 	move_and_slide()
@@ -41,6 +41,7 @@ func take_damage(amount: int) -> void:
 
 	hp = maxi(hp - amount, 0)
 	hp_changed.emit(hp, max_hp)
+	$HurtSound.play()
 	if hp <= 0:
 		died.emit()
 		return

@@ -1,0 +1,469 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/cooking_panel.gd" id="1_cook"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/panel_wood.png" id="panel_wood"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/chalk.png" id="chalk"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/board_ui.png" id="board_ui"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/plate_ui.png" id="plate_ui"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/pan_normal.png" id="pan_normal"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/pan_pressed.png" id="pan_pressed"]
+[ext_resource type="Texture2D" path="res://assets/ui/kitchen/pan_disabled.png" id="pan_disabled"]
+[ext_resource type="Texture2D" path="res://assets/items/bread.png" id="icon_bread"]
+[ext_resource type="Texture2D" path="res://assets/items/cheese.png" id="icon_cheese"]
+[ext_resource type="Texture2D" path="res://assets/items/ham.png" id="icon_ham"]
+[ext_resource type="Texture2D" path="res://assets/items/egg.png" id="icon_egg"]
+[ext_resource type="Texture2D" path="res://assets/items/tomato.png" id="icon_tomato"]
+[ext_resource type="Texture2D" path="res://assets/items/sandwich.png" id="icon_sandwich"]
+[ext_resource type="Texture2D" path="res://assets/items/omelette.png" id="icon_omelette"]
+[ext_resource type="Texture2D" path="res://assets/items/club.png" id="icon_club"]
+[ext_resource type="Script" path="res://scripts/data/recipe_data.gd" id="2_recipe"]
+[ext_resource type="Resource" path="res://data/recipes/sandwich.tres" id="recipe_sandwich"]
+[ext_resource type="Resource" path="res://data/recipes/omelette.tres" id="recipe_omelette"]
+[ext_resource type="Resource" path="res://data/recipes/club.tres" id="recipe_club"]
+[ext_resource type="Resource" path="res://data/recipes/burnt.tres" id="recipe_burnt"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="font"]
+[ext_resource type="AudioStream" path="res://sfxs/ui/success.wav" id="snd_cook"]
+[ext_resource type="AudioStream" path="res://sfxs/ui/failure.wav" id="snd_burnt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font = ExtResource("font")
+font_size = 16
+font_color = Color(1, 0.965, 0.6, 1)
+outline_size = 4
+outline_color = Color(0.286, 0.161, 0.09, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_small"]
+font = ExtResource("font")
+font_size = 8
+font_color = Color(1, 0.882, 0.71, 1)
+outline_size = 2
+outline_color = Color(0.286, 0.161, 0.09, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_chalk"]
+font = ExtResource("font")
+font_size = 8
+font_color = Color(1, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0.184, 0.192, 0.263, 1)
+
+[sub_resource type="Animation" id="Animation_RESET"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Result:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Result:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_result"]
+resource_name = "result"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Result:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Result:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cook"]
+_data = {
+&"RESET": SubResource("Animation_RESET"),
+&"result": SubResource("Animation_result")
+}
+
+[node name="CookingPanel" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_cook")
+recipes = Array[ExtResource("2_recipe")]([ExtResource("recipe_sandwich"), ExtResource("recipe_omelette"), ExtResource("recipe_club")])
+burnt = ExtResource("recipe_burnt")
+
+[node name="Recipes" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158
+offset_top = -256
+offset_right = -8
+offset_bottom = -152
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("chalk")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Title" type="Label" parent="Recipes"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 5.0
+offset_right = 150.0
+offset_bottom = 17.0
+text = "РЕЦЕПТЫ"
+label_settings = SubResource("LabelSettings_chalk")
+horizontal_alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="Recipes"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 20.0
+offset_right = 144.0
+offset_bottom = 40.0
+theme_override_constants/separation = 2
+
+[node name="Icon0" type="TextureRect" parent="Recipes/Row1"]
+layout_mode = 2
+texture = ExtResource("icon_bread")
+
+[node name="Icon1" type="TextureRect" parent="Recipes/Row1"]
+layout_mode = 2
+texture = ExtResource("icon_cheese")
+
+[node name="Icon2" type="TextureRect" parent="Recipes/Row1"]
+layout_mode = 2
+texture = ExtResource("icon_ham")
+
+[node name="Sign3" type="Label" parent="Recipes/Row1"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "="
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Icon4" type="TextureRect" parent="Recipes/Row1"]
+layout_mode = 2
+texture = ExtResource("icon_sandwich")
+
+[node name="Name" type="Label" parent="Recipes/Row1"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Дробовик"
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Row2" type="HBoxContainer" parent="Recipes"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 46.0
+offset_right = 144.0
+offset_bottom = 66.0
+theme_override_constants/separation = 2
+
+[node name="Icon0" type="TextureRect" parent="Recipes/Row2"]
+layout_mode = 2
+texture = ExtResource("icon_egg")
+
+[node name="Icon1" type="TextureRect" parent="Recipes/Row2"]
+layout_mode = 2
+texture = ExtResource("icon_cheese")
+
+[node name="Icon2" type="TextureRect" parent="Recipes/Row2"]
+layout_mode = 2
+texture = ExtResource("icon_tomato")
+
+[node name="Sign3" type="Label" parent="Recipes/Row2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "="
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Icon4" type="TextureRect" parent="Recipes/Row2"]
+layout_mode = 2
+texture = ExtResource("icon_omelette")
+
+[node name="Name" type="Label" parent="Recipes/Row2"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Бомба"
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Row3" type="HBoxContainer" parent="Recipes"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 72.0
+offset_right = 144.0
+offset_bottom = 92.0
+theme_override_constants/separation = 2
+
+[node name="Icon0" type="TextureRect" parent="Recipes/Row3"]
+layout_mode = 2
+texture = ExtResource("icon_sandwich")
+
+[node name="Sign1" type="Label" parent="Recipes/Row3"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "+"
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Icon2" type="TextureRect" parent="Recipes/Row3"]
+layout_mode = 2
+texture = ExtResource("icon_egg")
+
+[node name="Sign3" type="Label" parent="Recipes/Row3"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "="
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Icon4" type="TextureRect" parent="Recipes/Row3"]
+layout_mode = 2
+texture = ExtResource("icon_club")
+
+[node name="Name" type="Label" parent="Recipes/Row3"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Клаб"
+label_settings = SubResource("LabelSettings_chalk")
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -284
+offset_top = -148
+offset_right = -8
+offset_bottom = -8
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("panel_wood")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Board" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 166.0
+offset_bottom = 60.0
+texture = ExtResource("board_ui")
+
+[node name="Slots" type="Control" parent="Panel/Board"]
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 158.0
+offset_bottom = 52.0
+mouse_filter = 2
+
+[node name="Slot1" type="TextureButton" parent="Panel/Board/Slots"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 50.0
+offset_bottom = 46.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot2" type="TextureButton" parent="Panel/Board/Slots"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 6.0
+offset_right = 94.0
+offset_bottom = 46.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot3" type="TextureButton" parent="Panel/Board/Slots"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 6.0
+offset_right = 138.0
+offset_bottom = 46.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Cook" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 6.0
+offset_right = 250.0
+offset_bottom = 52.0
+disabled = true
+texture_normal = ExtResource("pan_normal")
+texture_pressed = ExtResource("pan_pressed")
+texture_disabled = ExtResource("pan_disabled")
+
+[node name="Label" type="Label" parent="Panel/Cook"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 46.0
+offset_right = 72.0
+offset_bottom = 58.0
+text = "ГОТОВИТЬ"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 1
+
+[node name="Plate" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 68.0
+offset_right = 267.0
+offset_bottom = 116.0
+texture = ExtResource("plate_ui")
+
+[node name="Slots" type="Control" parent="Panel/Plate"]
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 258.0
+offset_bottom = 48.0
+mouse_filter = 2
+
+[node name="Slot1" type="TextureButton" parent="Panel/Plate/Slots"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 49.0
+offset_bottom = 44.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot2" type="TextureButton" parent="Panel/Plate/Slots"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 4.0
+offset_right = 89.0
+offset_bottom = 44.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot3" type="TextureButton" parent="Panel/Plate/Slots"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 4.0
+offset_right = 129.0
+offset_bottom = 44.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot4" type="TextureButton" parent="Panel/Plate/Slots"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 4.0
+offset_right = 169.0
+offset_bottom = 44.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot5" type="TextureButton" parent="Panel/Plate/Slots"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 4.0
+offset_right = 209.0
+offset_bottom = 44.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Slot6" type="TextureButton" parent="Panel/Plate/Slots"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 4.0
+offset_right = 249.0
+offset_bottom = 44.0
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hint" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 122.0
+offset_right = 268.0
+offset_bottom = 134.0
+text = "Нажми на продукт: он ляжет на доску"
+label_settings = SubResource("LabelSettings_small")
+horizontal_alignment = 1
+
+[node name="Result" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 64.0
+offset_right = 200.0
+offset_bottom = 88.0
+grow_horizontal = 2
+pivot_offset = Vector2(200, 12)
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cook")
+}
+
+[node name="CookSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("snd_cook")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="BurntSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("snd_burnt")
+volume_db = -4.0
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/Board/Slots/Slot1" to="." method="_on_board_slot_pressed" binds= [0]]
+[connection signal="pressed" from="Panel/Board/Slots/Slot2" to="." method="_on_board_slot_pressed" binds= [1]]
+[connection signal="pressed" from="Panel/Board/Slots/Slot3" to="." method="_on_board_slot_pressed" binds= [2]]
+[connection signal="pressed" from="Panel/Cook" to="." method="_on_cook_pressed"]
+[connection signal="pressed" from="Panel/Plate/Slots/Slot1" to="." method="_on_plate_slot_pressed" binds= [0]]
+[connection signal="pressed" from="Panel/Plate/Slots/Slot2" to="." method="_on_plate_slot_pressed" binds= [1]]
+[connection signal="pressed" from="Panel/Plate/Slots/Slot3" to="." method="_on_plate_slot_pressed" binds= [2]]
+[connection signal="pressed" from="Panel/Plate/Slots/Slot4" to="." method="_on_plate_slot_pressed" binds= [3]]
+[connection signal="pressed" from="Panel/Plate/Slots/Slot5" to="." method="_on_plate_slot_pressed" binds= [4]]
+[connection signal="pressed" from="Panel/Plate/Slots/Slot6" to="." method="_on_plate_slot_pressed" binds= [5]]

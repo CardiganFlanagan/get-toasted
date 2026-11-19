@@ -1,0 +1,89 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://assets/ui/shop/tag_normal.png" id="tag_normal"]
+[ext_resource type="Texture2D" path="res://assets/ui/shop/tag_pressed.png" id="tag_pressed"]
+[ext_resource type="Texture2D" path="res://assets/ui/shop/tag_disabled.png" id="tag_disabled"]
+[ext_resource type="Texture2D" path="res://assets/ui/shop/sold.png" id="sold"]
+[ext_resource type="Texture2D" path="res://assets/items/crumb_icon.png" id="crumb"]
+[ext_resource type="FontFile" uid="uid://exbxexydm4wt" path="res://fonts/Tiny5-Regular.ttf" id="font"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_name"]
+font = ExtResource("font")
+font_size = 8
+font_color = Color(0.286, 0.161, 0.09, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_price"]
+font = ExtResource("font")
+font_size = 16
+font_color = Color(0.286, 0.161, 0.09, 1)
+
+[node name="PriceTag" type="TextureButton"]
+custom_minimum_size = Vector2(64, 88)
+offset_right = 64.0
+offset_bottom = 88.0
+texture_normal = ExtResource("tag_normal")
+texture_pressed = ExtResource("tag_pressed")
+texture_disabled = ExtResource("tag_disabled")
+
+[node name="Info" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 88.0
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Info"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 52.0
+offset_bottom = 54.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 55.0
+offset_right = 60.0
+offset_bottom = 67.0
+text = "Хлеб"
+label_settings = SubResource("LabelSettings_name")
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 67.0
+offset_right = 32.0
+offset_bottom = 85.0
+text = "3"
+label_settings = SubResource("LabelSettings_price")
+horizontal_alignment = 2
+
+[node name="Crumb" type="TextureRect" parent="Info"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 67.0
+offset_right = 58.0
+offset_bottom = 87.0
+mouse_filter = 2
+texture = ExtResource("crumb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Sold" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 3.0
+offset_top = 34.0
+offset_right = 61.0
+offset_bottom = 54.0
+rotation = -0.21
+pivot_offset = Vector2(29, 10)
+mouse_filter = 2
+texture = ExtResource("sold")
+
+

@@ -1,0 +1,16 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/music.gd" id="1_music"]
+
+[node name="Music" type="Node"]
+process_mode = 3
+script = ExtResource("1_music")
+
+[node name="A" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="B" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[connection signal="finished" from="A" to="A" method="play"]
+[connection signal="finished" from="B" to="B" method="play"]
