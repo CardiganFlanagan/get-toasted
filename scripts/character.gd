@@ -4,6 +4,7 @@ signal hp_changed(hp: int, max_hp: int)
 signal died
 
 @export var stats: PlayerStats
+@export var hurt_effect: PackedScene
 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
@@ -21,6 +22,7 @@ func _physics_process(_delta):
 	var direction = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = direction * stats.speed
 	move_and_slide()
+	$Dust.emitting = direction != Vector2.ZERO
 
 	if direction != Vector2.ZERO:
 		sprite_2d.play("walk")
@@ -42,6 +44,10 @@ func take_damage(amount: int) -> void:
 	hp = maxi(hp - amount, 0)
 	hp_changed.emit(hp, max_hp)
 	$HurtSound.play()
+	Juice.flash(sprite_2d)
+	Juice.spawn(hurt_effect, global_position)
+	Juice.shake(5.0)
+	Juice.hit_stop(0.05)
 	if hp <= 0:
 		died.emit()
 		return

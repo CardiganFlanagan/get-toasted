@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/data/ingredient_data.gd" id="1_item"]
 [ext_resource type="Texture2D" path="res://assets/items/tomato.png" id="2_icon"]
+[ext_resource type="Resource" path="res://data/weapons/ingredients/tomato.tres" id="3_weapon"]
 
 [resource]
 script = ExtResource("1_item")
 title = "Помидор"
 icon = ExtResource("2_icon")
 price = 3
+weapon = ExtResource("3_weapon")

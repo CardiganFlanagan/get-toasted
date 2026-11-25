@@ -836,6 +836,15 @@ _data = {
 &"to_menu": SubResource("Animation_to_menu")
 }
 
+[sub_resource type="Gradient" id="Gradient_confetti"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8)
+colors = PackedColorArray(0.95, 0.3, 0.3, 1, 1, 0.82, 0.3, 1, 0.45, 0.8, 0.4, 1, 0.4, 0.65, 0.95, 1, 0.95, 0.55, 0.8, 1)
+
+[sub_resource type="Gradient" id="Gradient_confetti_fade"]
+offsets = PackedFloat32Array(0, 0.8, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="EndScreen" type="CanvasLayer" unique_id=101176790]
 process_mode = 3
 layer = 20
@@ -868,6 +877,25 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_receipt")
+
+[node name="Confetti" type="CPUParticles2D" parent="Board" groups=["juice"]]
+position = Vector2(320, -8)
+emitting = false
+amount = 70
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.6
+emission_shape = 3
+emission_rect_extents = Vector2(360, 4)
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 90)
+initial_velocity_min = 30.0
+initial_velocity_max = 70.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_confetti_fade")
+color_initial_ramp = SubResource("Gradient_confetti")
 
 [node name="Slot" type="Control" parent="Board" unique_id=1413421582]
 clip_contents = true

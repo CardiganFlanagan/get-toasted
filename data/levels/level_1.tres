@@ -1,43 +1,27 @@
 [gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://0851jga320ce"]
 
 [ext_resource type="Script" uid="uid://sm433acukkun" path="res://scripts/data/level_data.gd" id="1_level"]
-[ext_resource type="Script" uid="uid://cvasdgyjimyf3" path="res://scripts/data/wave.gd" id="2_wave"]
-[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="3_chaser"]
-[ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="4_bee"]
+[ext_resource type="Script" uid="uid://bft4qhhku5nco" path="res://scripts/data/spawn_rule.gd" id="2_rule"]
+[ext_resource type="PackedScene" uid="uid://brspiwko8hn2r" path="res://scenes/bee.tscn" id="bee"]
+[ext_resource type="PackedScene" uid="uid://dkymsk1mnjivx" path="res://scenes/enemy.tscn" id="chaser"]
 
-[sub_resource type="Resource" id="Resource_wave1"]
-script = ExtResource("2_wave")
-enemy_scene = ExtResource("3_chaser")
-count = 2
-delay = 1.0
+[sub_resource type="Resource" id="Rule_chaser"]
+script = ExtResource("2_rule")
+enemy_scene = ExtResource("chaser")
+weight = 4.0
+group_min = 2
+group_max = 4
 
-[sub_resource type="Resource" id="Resource_wave2"]
-script = ExtResource("2_wave")
-enemy_scene = ExtResource("3_chaser")
-count = 3
-delay = 10.0
-
-[sub_resource type="Resource" id="Resource_wave3"]
-script = ExtResource("2_wave")
-enemy_scene = ExtResource("4_bee")
-count = 1
-delay = 10.0
-
-[sub_resource type="Resource" id="Resource_wave4"]
-script = ExtResource("2_wave")
-enemy_scene = ExtResource("3_chaser")
-count = 3
-delay = 10.0
-
-[sub_resource type="Resource" id="Resource_p2y5d"]
-script = ExtResource("2_wave")
-enemy_scene = ExtResource("3_chaser")
-count = 5
-delay = 10.0
-metadata/_custom_type_script = "uid://cvasdgyjimyf3"
+[sub_resource type="Resource" id="Rule_bee"]
+script = ExtResource("2_rule")
+enemy_scene = ExtResource("bee")
+from_second = 30.0
+group_max = 2
 
 [resource]
 script = ExtResource("1_level")
 title = "Завтрак"
 time_limit = 120.0
-waves = Array[ExtResource("2_wave")]([SubResource("Resource_wave1"), SubResource("Resource_wave2"), SubResource("Resource_wave3"), SubResource("Resource_wave4"), SubResource("Resource_p2y5d")])
+spawn_every_end = 1.6
+max_enemies = 30
+spawns = Array[ExtResource("2_rule")]([SubResource("Rule_chaser"), SubResource("Rule_bee")])

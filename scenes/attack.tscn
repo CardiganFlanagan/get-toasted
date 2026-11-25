@@ -1,0 +1,8 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/weapon.tscn" id="1_weapon"]
+
+[node name="Attack" instance=ExtResource("1_weapon")]
+
+[node name="ShotSound" parent="." index="1"]
+volume_db = -14.0

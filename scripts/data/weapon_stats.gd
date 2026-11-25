@@ -8,3 +8,4 @@ extends Resource
 @export var bullet_scene: PackedScene
 @export var count := 1
 @export var spread: float
+@export var sound: AudioStream

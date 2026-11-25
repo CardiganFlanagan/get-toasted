@@ -13,6 +13,12 @@ font_size = 16
 outline_size = 4
 outline_color = Color(0.286, 0.161, 0.09, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_fps"]
+font = ExtResource("font")
+font_size = 8
+outline_size = 2
+outline_color = Color(0.286, 0.161, 0.09, 1)
+
 [node name="HUD" type="Control" unique_id=1564659137]
 layout_mode = 3
 anchors_preset = 0
@@ -112,5 +118,20 @@ mouse_filter = 2
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 mouse_filter = 2
+
+
+[node name="Fps" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 28.0
+offset_right = 30.0
+offset_bottom = 38.0
+grow_horizontal = 2
+text = "60 FPS"
+label_settings = SubResource("LabelSettings_fps")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -645,8 +645,9 @@ flat = true
 alignment = 0
 
 [node name="ResetDialog" type="ConfirmationDialog" parent="." unique_id=172499753]
+oversampling_override = 1.0
 title = "Сброс"
-size = Vector2i(300, 110)
+size = Vector2i(319, 110)
 ok_button_text = "Удалить"
 dialog_text = "Удалить весь прогресс?
 Открытые смены и рекорд пропадут."

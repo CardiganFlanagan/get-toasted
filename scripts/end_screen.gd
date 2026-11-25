@@ -22,6 +22,7 @@ func show_result(won: bool, shift: String, seconds: int, kills: Dictionary, tota
 	$Board/Caption.text = "Смена закрыта!" if won else "Тост подгорел..."
 	if won:
 		$WinJingle.play()
+		$Board/Confetti.restart()
 	else:
 		$LoseJingle.play()
 	show()

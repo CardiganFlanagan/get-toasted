@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" path="res://assets/packs/stranded/medium_bug_attack.png" id="4_attack"]
 [ext_resource type="PackedScene" path="res://scenes/crumb_pickup.tscn" id="drop_crumbs"]
 [ext_resource type="PackedScene" path="res://scenes/bug_death.tscn" id="5_death"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="flash_shader"]
+[ext_resource type="PackedScene" path="res://scenes/fx/hit_sparks.tscn" id="fx_hit"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_body"]
 radius = 12.0
@@ -152,6 +154,11 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+resource_local_to_scene = true
+shader = ExtResource("flash_shader")
+shader_parameter/flash = 0.0
+
 [node name="enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
@@ -160,11 +167,13 @@ script = ExtResource("1_script")
 stats = ExtResource("2_stats")
 drop_scene = ExtResource("drop_crumbs")
 death_scene = ExtResource("5_death")
+hit_effect = ExtResource("fx_hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_body")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_flash")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bug")
 animation = &"move"

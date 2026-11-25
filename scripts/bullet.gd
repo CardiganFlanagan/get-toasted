@@ -9,6 +9,9 @@ var direction := Vector2.RIGHT
 @export var target_group: StringName
 @export var blast_radius: float
 @export var hit_effect: PackedScene
+@export var pierce := 0
+@export var spin := 0.0
+@export var shake := 0.0
 
 
 func _ready() -> void:
@@ -17,6 +20,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
+	rotation += spin * delta
 	life_time -= delta
 	if life_time <= 0:
 		hit(null)
@@ -31,6 +35,10 @@ func hit(body: Node2D) -> void:
 				node.take_damage(damage)
 	elif body and body.is_in_group(target_group):
 		body.take_damage(damage)
+		if pierce > 0:
+			pierce -= 1
+			return
+	Juice.shake(shake)
 	if hit_effect:
 		var effect: Node2D = hit_effect.instantiate()
 		effect.position = global_position

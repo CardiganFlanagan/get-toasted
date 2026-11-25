@@ -9,13 +9,18 @@ var recipe: RecipeData
 
 
 func _ready() -> void:
-	timer.wait_time = stats.cooldown
+	set_stats(stats)
 
 
 func equip(new_recipe: RecipeData) -> void:
 	recipe = new_recipe
-	stats = recipe.weapon
+	set_stats(recipe.weapon)
+
+
+func set_stats(new_stats: WeaponStats) -> void:
+	stats = new_stats
 	timer.wait_time = stats.cooldown
+	$ShotSound.stream = stats.sound
 
 
 func _on_timer_timeout() -> void:

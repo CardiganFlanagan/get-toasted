@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://bfi3vse81fjtg"
 
 Game="*uid://bavn7dqrnoll"
 Music="*res://scenes/music.tscn"
+Juice="*res://scripts/juice.gd"
 
 [display]
 

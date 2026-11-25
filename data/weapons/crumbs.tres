@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="WeaponStats" format=3]
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://baevqvljhota6"]
 
-[ext_resource type="Script" path="res://scripts/data/weapon_stats.gd" id="1_stats"]
-[ext_resource type="PackedScene" path="res://scenes/crumb.tscn" id="2_crumb"]
+[ext_resource type="Script" uid="uid://bhkbrgrn4cbd4" path="res://scripts/data/weapon_stats.gd" id="1_stats"]
+[ext_resource type="PackedScene" path="res://scenes/crumb.tscn" id="2_bullet"]
+[ext_resource type="AudioStream" path="res://sfxs/random/shot.tres" id="3_sound"]
 
 [resource]
 script = ExtResource("1_stats")
@@ -9,5 +10,5 @@ damage = 1
 cooldown = 0.6
 attack_range = 220.0
 bullet_speed = 350.0
-bullet_scene = ExtResource("2_crumb")
-count = 1
+bullet_scene = ExtResource("2_bullet")
+sound = ExtResource("3_sound")

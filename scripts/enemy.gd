@@ -6,6 +6,7 @@ signal killed(stats: EnemyStats)
 @export var stats: EnemyStats
 @export var drop_scene: PackedScene
 @export var death_scene: PackedScene
+@export var hit_effect: PackedScene
 
 var target: CharacterBody2D
 var hp: int
@@ -20,10 +21,12 @@ func take_damage(amount: int) -> void:
 	if hp <= 0:
 		return
 	hp -= amount
-	create_tween().tween_property(self, "modulate", Color.WHITE, 0.15).from(Color.RED)
+	Juice.flash($AnimatedSprite2D)
+	spawn(hit_effect)
 	if hp <= 0:
 		killed.emit(stats)
-		spawn(death_scene)
+		var burst: PixelBurst = spawn(death_scene)
+		burst.explode($AnimatedSprite2D)
 		var drop: Pickup = spawn(drop_scene)
 		if drop:
 			drop.amount = stats.crumbs

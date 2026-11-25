@@ -3,6 +3,7 @@ extends Area2D
 
 @export var magnet_range := 90.0
 @export var speed := 260.0
+@export var effect: PackedScene
 
 var amount := 1
 var player: Node2D
@@ -20,4 +21,5 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		body.get_node("Plate").add_crumbs(amount)
+		Juice.spawn(effect, global_position)
 		queue_free()

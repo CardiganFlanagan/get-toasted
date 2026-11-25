@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="AudioStream" path="res://sfxs/random/splat.tres" id="1_sound"]
+
+[sub_resource type="Gradient" id="Gradient_fade"]
+offsets = PackedFloat32Array(0, 0.7, 1)
+colors = PackedColorArray(0.95, 0.2, 0.12, 1, 0.8, 0.1, 0.08, 1, 0.7, 0.08, 0.06, 0)
+
+[node name="Splat" type="CPUParticles2D" groups=["juice"]]
+one_shot = true
+explosiveness = 1.0
+color_ramp = SubResource("Gradient_fade")
+amount = 10
+lifetime = 0.4
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 110.0
+damping_min = 200.0
+damping_max = 260.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_sound")
+volume_db = -8.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Free" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Free" to="." method="queue_free"]

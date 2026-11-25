@@ -1,67 +1,12 @@
 [gd_scene format=3]
 
-[ext_resource type="Texture2D" path="res://assets/packs/ninja/smoke.png" id="1_tex"]
+[ext_resource type="PackedScene" path="res://scenes/fx/pixel_burst.tscn" id="1_burst"]
 [ext_resource type="AudioStream" path="res://sfxs/ninja/poof.wav" id="2_sound"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx_0"]
-atlas = ExtResource("1_tex")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx_1"]
-atlas = ExtResource("1_tex")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx_2"]
-atlas = ExtResource("1_tex")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx_3"]
-atlas = ExtResource("1_tex")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx_4"]
-atlas = ExtResource("1_tex")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fx_5"]
-atlas = ExtResource("1_tex")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx_2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx_4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fx_5")
-}],
-"loop": false,
-"name": &"default",
-"speed": 14.0
-}]
-
-[node name="Poof" type="AnimatedSprite2D"]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_fx")
-autoplay = "default"
+[node name="Poof" instance=ExtResource("1_burst")]
 
 [node name="Sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_sound")
 volume_db = -6.0
 autoplay = true
 bus = &"SFX"
-
-[connection signal="animation_finished" from="." to="." method="queue_free"]

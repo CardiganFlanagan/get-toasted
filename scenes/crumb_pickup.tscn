@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_pickup"]
 [ext_resource type="Texture2D" path="res://assets/items/crumb_pickup.png" id="2_crumb"]
+[ext_resource type="PackedScene" path="res://scenes/fx/pickup_sparkle.tscn" id="fx_pickup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
 radius = 14.0
@@ -31,6 +32,7 @@ _data = {
 [node name="CrumbPickup" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_pickup")
+effect = ExtResource("fx_pickup")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

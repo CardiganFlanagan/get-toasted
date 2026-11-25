@@ -2,6 +2,7 @@ class_name Plate
 extends Node
 
 signal changed(crumbs: int, items: Array)
+signal items_changed(items: Array)
 
 @export var size := 6
 
@@ -27,8 +28,10 @@ func buy(item: IngredientData) -> void:
 func add(item: IngredientData) -> void:
 	items.append(item)
 	changed.emit(crumbs, items)
+	items_changed.emit(items)
 
 
 func remove(i: int) -> void:
 	items.remove_at(i)
 	changed.emit(crumbs, items)
+	items_changed.emit(items)

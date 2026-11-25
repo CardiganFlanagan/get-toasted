@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" path="res://assets/packs/bee/bee_idle.png" id="6_idle"]
 [ext_resource type="PackedScene" path="res://scenes/bee_death.tscn" id="7_death"]
 [ext_resource type="AudioStream" path="res://sfxs/ninja/bee_aim.wav" id="8_aim"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="flash_shader"]
+[ext_resource type="PackedScene" path="res://scenes/fx/hit_sparks.tscn" id="fx_hit"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
 radius = 9.0
@@ -120,6 +122,11 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+resource_local_to_scene = true
+shader = ExtResource("flash_shader")
+shader_parameter/flash = 0.0
+
 [node name="bee" type="CharacterBody2D" unique_id=610651803 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
@@ -128,6 +135,7 @@ bullet_scene = ExtResource("2_ogg2i")
 stats = ExtResource("4_stats")
 drop_scene = ExtResource("drop_crumbs")
 death_scene = ExtResource("7_death")
+hit_effect = ExtResource("fx_hit")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1075953321]
 shape = SubResource("CircleShape2D_bhunq")
@@ -139,6 +147,7 @@ target_position = Vector2(0, 44)
 collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1048028765]
+material = SubResource("ShaderMaterial_flash")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_bee")
 animation = &"fly"

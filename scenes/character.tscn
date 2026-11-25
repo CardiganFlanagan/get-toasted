@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ck7hy3n64wuu1" path="res://assets/toast_idle_sheet.png" id="1_rkhd4"]
 [ext_resource type="Texture2D" uid="uid://brtnrxhli8pac" path="res://assets/toast_walk_sheet.png" id="2_lrhn5"]
 [ext_resource type="AudioStream" path="res://sfxs/random/hit.tres" id="snd_hit"]
+[ext_resource type="Shader" path="res://shaders/hit_flash.gdshader" id="flash_shader"]
+[ext_resource type="PackedScene" path="res://scenes/fx/jam_splash.tscn" id="fx_jam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_my7n2"]
 atlas = ExtResource("1_rkhd4")
@@ -150,14 +152,25 @@ animations = [{
 radius = 15.0
 height = 32.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_flash"]
+resource_local_to_scene = true
+shader = ExtResource("flash_shader")
+shader_parameter/flash = 0.0
+
+[sub_resource type="Gradient" id="Gradient_dust"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(0.92, 0.85, 0.72, 0.8, 0.92, 0.85, 0.72, 0)
+
 [node name="toast" type="CharacterBody2D" unique_id=2017173815]
 position = Vector2(302, 194)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_lrhn5")
 stats = ExtResource("9_stats")
+hurt_effect = ExtResource("fx_jam")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2000431088]
+material = SubResource("ShaderMaterial_flash")
 sprite_frames = SubResource("SpriteFrames_bhunq")
 animation = &"idle"
 autoplay = "idle"
@@ -165,6 +178,21 @@ frame_progress = 0.23769787
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2080684013]
 shape = SubResource("CapsuleShape2D_riqys")
+
+[node name="Dust" type="CPUParticles2D" parent="." groups=["juice"]]
+z_index = -1
+position = Vector2(0, 16)
+emitting = false
+amount = 8
+lifetime = 0.4
+direction = Vector2(0, -1)
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 18.0
+scale_amount_min = 1.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_dust")
 
 [node name="Weapon" parent="." instance=ExtResource("10_weapon")]
 

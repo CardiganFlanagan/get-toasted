@@ -4,11 +4,16 @@ extends Control
 @onready var virtual_joystick: VirtualJoystick = $VirtualJoystick
 @onready var crumbs_label: Label = $Crumbs/Label
 @onready var plate_slots: Array[Node] = $Plate/Slots.get_children()
+@onready var fps_label: Label = $Fps
 
 
 func _ready() -> void:
 	if not DisplayServer.is_touchscreen_available():
 		virtual_joystick.hide()
+
+
+func _process(_delta: float) -> void:
+	fps_label.text = "%d FPS" % Engine.get_frames_per_second()
 
 
 func _on_texture_button_pressed() -> void:
